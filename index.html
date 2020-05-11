@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium Web">
+
+    <script type = "text/javascript" src = "js/mainFunctions.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>SAY HI</title>
+</head>
+
+<body>
+
+<! navigator bar>
+<div id = "nav_bar" data-collapse = "medium" data-animation = "over-right" data-duration = "600">
+    <nav id = "nav-menu" role="navigation">
+        <a class="nav-buttons nav-link" href = "index.html"> HOME </a>
+        <a class="nav-buttons nav-link" href = "contact.html"> ABOUT </a>
+    </nav>
+</div>
+
+<! header>
+<div id = "container-div">
+    <p><span>"SAY HI"</span></p>
+    <img id='picture' src="img/cuteProfile.jpg" alt="CUTEEEE" width="200px">
+
+    <div>
+        <button id="add_msg" class="button_stuff" onclick="moveVertical();">ADD</button>
+        <button id="clear_msg" class="button_stuff" onclick="moveHorizontal();">DEL</button>
+    </div>
+</div>
+
+<! message block>
+<section class = "row" id = "msg_block">
+    <div id = "msg_block_add_done">
+        <p>Yayy!</p>
+    </div>
+    <div id = "msg_block_add_fail">
+        <p>Oops!</p>
+    </div>
+
+    <div class = "column" id = "msg_block_added_msg">
+        <form id = "msg_form">
+            <label class = "msg_block_header">WELCOME</label><br>
+            <label class = "label" for = "msger_name">Name</label><br>
+            <textarea class = "msg_text_area" id = "msger_name" placeholder="Enter your name" ></textarea><br>
+
+            <label class = "label" for = "content">Message*</label><br>
+            <textarea class = "msg_text_area" id = "content" placeholder="Enter your message" required = "required"></textarea><br>
+
+            <input class = "button_stuff" id = "submit_msg" type = "submit" value = "SUBMIT" data-wait = "please wait..">
+        </form>
+    </div>
+
+
+    <div class = "column" id = "msg_block_stored_msg">
+        <label class = "msg_block_header">HISTORY</label><br>
+
+        <div class="cards">
+            <div class="card-container">
+                <div class="card-container-first-row" style="">
+                    <img class = "msger_profile" src="img/anonymous.jpg" alt="Avatar" style="width:10%; display: inline">
+                    <h4 class ="msger_shown_name" style="display: inline; white-space: nowrap"><b>John Doe</b></h4>
+                </div>
+                <div class="card-container-second-row">
+                    <p class = "msger_left_msg">message shown here!</p>
+                    <div class="msg-buttons">
+                        <button class = "card-button" onclick = "likeMsg();"><i class='fas fa-glass-cheers'></i></button>
+                        <button class = "card-button" onclick = "deleteMsg();"><i class='fas fa-trash-alt'></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card-container-first-row" style="">
+                    <img class = "msger_profile" src="img/anonymous.jpg" alt="Avatar" style="width:10%; display: inline">
+                    <h4 class ="msger_shown_name" style="display: inline; white-space: nowrap"><b>John Doe</b></h4>
+                </div>
+                <div class="card-container-second-row">
+                    <p class = "msger_left_msg">message shown here!</p>
+                    <div class = "msg-buttons">
+                        <button class = "card-button" onclick = "likeMsg();"><i class='fas fa-glass-cheers'></i></button>
+                        <button class = "card-button" onclick = "deleteMsg();"><i class='fas fa-trash-alt'></i></button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

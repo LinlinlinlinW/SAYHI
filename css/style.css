@@ -1,0 +1,132 @@
+.card-container-first-row {
+    white-space: nowrap;
+    border-bottom-color: #fbc8ec;
+}
+.card-container-second-row{
+
+}
+
+.cards{
+    padding: 20px;
+}
+.card-container {
+    box-shadow: 3px 3px 3px 3px #fbc8ec;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top:20px;
+}
+
+.card-container:hover{
+    box-shadow: 1px 2px 2px 1px #fbc8ec;
+    transition: 0.2s;
+}
+
+
+span{
+    position: relative;
+    margin-right: 100px;
+    margin-left: 100px;
+    font-size: 3rem;
+}
+
+.msg_block_header {
+    position: relative;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+img {
+    position: relative;
+    z-index: 1;
+}
+
+#msg_block_add_done, #msg_block_add_fail {
+    display: none;
+}
+
+.button_stuff{
+    position:relative;
+    z-index: 1000;
+    background-color: #fbc8ec;
+    color: #FFFFFF;
+    outline: none;
+}
+
+.button_stuff:hover{
+    background-color: black;
+    color: #fbc8ec;
+    transition:0.2s;
+}
+
+#content, #msger_name{
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    border-radius: 3px;
+}
+
+#msg_block {
+    margin: 40px 40px 20px 20px;
+}
+
+#msg_block:after {
+    content:"";
+    display: table;
+    clear:both;
+}
+
+.column{
+    float: left;
+    padding: 10px;
+    height: 300px;
+    text-align: center;
+}
+
+#msg_block_stored_msg, #msg_block_added_msg{
+    width: 40%;
+    background-color: transparent;
+    text-align: center;
+}
+
+.row {
+    text-align: center;
+}
+
+.nav-link{
+    padding: 16px 18px;
+    color: black;
+    text-decoration: none;
+
+}
+
+.nav-buttons:hover{
+    color: #fbc8ec;
+    transition: 0.27s;
+
+}
+
+#nav_bar {
+    padding-top:10px;
+    padding-bottom: 20px;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+}
+
+.msg-buttons {
+    text-align: right;
+    padding-right: 20px;
+}
+
+title {
+    text-align: center;
+
+}
+
+*{
+    background-color: #b7bad6;
+    font-family: Titillium Web;
+}
