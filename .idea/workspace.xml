@@ -21,7 +21,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Recipe/Recipe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../todo_list" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
@@ -62,7 +62,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589051153177</updated>
-      <workItem from="1589051164431" duration="34020000" />
+      <workItem from="1589051164431" duration="34178000" />
+      <workItem from="1589156998601" duration="20914000" />
+      <workItem from="1589251902201" duration="8654000" />
     </task>
     <servers />
   </component>

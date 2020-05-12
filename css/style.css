@@ -1,32 +1,54 @@
-.card-container-first-row {
+.card-container-first-row, .card-container-second-row  {
     white-space: nowrap;
-    border-bottom-color: #fbc8ec;
+    text-align: left;
+    display: block;
 }
-.card-container-second-row{
-
+.card-container-third-row {
+    text-align: right;
+    display: block;
 }
 
 .cards{
-    padding: 20px;
+    padding: 20px 40px 20px 40px;
+    text-align: center;
 }
 .card-container {
-    box-shadow: 3px 3px 3px 3px #fbc8ec;
-    padding: 15px;
+    /*box-shadow: 3px 3px 3px 3px #fbc8ec;*/
+    text-align: center;
+    border-bottom-style:solid;
+    border-bottom-color: #fbc8ec;
+    padding: 15px 40px 15px 40px;
     margin-bottom: 20px;
     margin-top:20px;
+    opacity:0.8;
+    filter:blur(2px);
 }
-
 .card-container:hover{
-    box-shadow: 1px 2px 2px 1px #fbc8ec;
+    /*box-shadow: 1px 2px 2px 1px #fbc8ec;*/
+    opacity: 1;
+    filter:blur(0);
     transition: 0.2s;
 }
+.card-button {
+    text-decoration: none;
+    outline: none;
+    background-color: transparent;
+    border:none;
+}
+.fas {
+    color: #FFFFFF;
+    background-color: transparent;
+}
+.fas:hover{
+    color: #fbc8ec;
+    transition: 0.1s;
+}
 
-
-span{
-    position: relative;
-    margin-right: 100px;
-    margin-left: 100px;
-    font-size: 3rem;
+#msger_content, #msger_name{
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    border-radius: 3px;
 }
 
 .msg_block_header {
@@ -37,51 +59,14 @@ span{
     font-size: 2rem;
 }
 
-img {
-    position: relative;
-    z-index: 1;
-}
-
-#msg_block_add_done, #msg_block_add_fail {
-    display: none;
-}
-
-.button_stuff{
-    position:relative;
-    z-index: 1000;
-    background-color: #fbc8ec;
-    color: #FFFFFF;
-    outline: none;
-}
-
-.button_stuff:hover{
-    background-color: black;
-    color: #fbc8ec;
-    transition:0.2s;
-}
-
-#content, #msger_name{
-    resize: none;
-    background-color: transparent;
-    outline: none;
-    border-radius: 3px;
-}
-
-#msg_block {
-    margin: 40px 40px 20px 20px;
-}
-
 #msg_block:after {
     content:"";
     display: table;
     clear:both;
 }
-
-.column{
-    float: left;
-    padding: 10px;
-    height: 300px;
-    text-align: center;
+#msg_block {
+    /*top right bottom left*/
+    margin: 40px 20px 40px 20px;
 }
 
 #msg_block_stored_msg, #msg_block_added_msg{
@@ -90,40 +75,73 @@ img {
     text-align: center;
 }
 
-.row {
+.column{
+    float: left;
+    padding: 10px;
+    height: 300px;
     text-align: center;
 }
-
-.nav-link{
-    padding: 16px 18px;
-    color: black;
-    text-decoration: none;
-
+.row {
+    text-align: center;
 }
 
 .nav-buttons:hover{
     color: #fbc8ec;
     transition: 0.27s;
-
+}
+.nav-buttons{
+    display:inline-block;
+    padding: 10px 17px 10px 17px;
+    color: black;
+    text-decoration: none;
 }
 
-#nav_bar {
-    padding-top:10px;
-    padding-bottom: 20px;
-    display: flex;
+#nav-menu {
+    text-align: center;
+}
+
+#nav-bar {
+    top:0;
     position: fixed;
     width: 100%;
-    justify-content: center;
-}
-
-.msg-buttons {
-    text-align: right;
-    padding-right: 20px;
-}
-
-title {
+    display: block;
+    padding-top:15px;
+    padding-bottom: 15px;
     text-align: center;
 
+}
+#container-div {
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    margin-top: 70px;
+}
+
+span{
+    width: 100%;
+    position: static;
+    margin-right: 100px;
+    margin-left: 100px;
+    font-size: 3rem;
+    text-align: center;
+}
+img {
+    position: relative;
+    z-index: 1;
+}
+
+.button_stuff{
+    position:relative;
+    z-index: 1000;
+    background-color: #fbc8ec;
+    color: #FFFFFF;
+    outline: none;
+    border: none;
+}
+.button_stuff:hover{
+    background-color: black;
+    color: #fbc8ec;
+    transition:0.2s;
 }
 
 *{
