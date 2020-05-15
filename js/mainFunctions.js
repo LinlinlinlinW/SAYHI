@@ -138,7 +138,7 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
     btnDel.onclick = function(){
         let div = this.parentElement.parentElement;
         div.style.display = "none";
-        console.log("before delete, the localStorage is ",window.localStorage);
+        console.log("before delete, the localStorage is ",window.localStorage, id);
         window.localStorage.removeItem(id);
         console.log("after delete, the localStorage is ",window.localStorage);
     };
