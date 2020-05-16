@@ -1,55 +1,55 @@
 // store user information
 let userList = [
     {
-        "id" : 1,
+        "id": 0,
         "name": "John Doe",
         "msg": "Message shown here!",
         "like" : 0,
         "haveRead": false
     },
     {
-        "id" : 2,
+        "id": 1,
         "name": "Obaseki Nosa",
         "msg": "Message shown here!",
-        "like" : 1,
+        "like" : 3,
         "haveRead": true
     }
 ];
 
 // helper function count the number of users
 function countUser() {
-    return window.localStorage.length;
+    return JSON.parse(window.localStorage.getItem("userList")).length;
 }
 
 // onload the history right after loading the website
 function load() {
-    console.log("in load");
-    console.log("number of users is ", countUser());
+    console.log(">>> in load");
+    window.localStorage.setItem("userList", JSON.stringify(userList));
 
-    // initialize message
-    for (let i in userList) {
-        const picked = ( ({ name, msg , like, haveRead}) => ({ name, msg, like, haveRead}))(userList[i]);
-        // console.log("picked is ", picked);
-        window.localStorage.setItem(userList[i].id, JSON.stringify(picked));
-    }
+    console.log(">>> the number of users right now is ", countUser());
+
+    // display all cards
     displayCards();
 }
 
 // helper function of displaying all cards
 function displayCards(){
     let numUsers = countUser();
-    for (let i=1; i <= numUsers; i++) {
-        let name = JSON.parse(window.localStorage.getItem(i)).name;
-        let msg = JSON.parse(window.localStorage.getItem(i)).msg;
-        let like = parseInt(JSON.parse(window.localStorage.getItem(i)).like);
-        let haveRead = JSON.parse(window.localStorage.getItem(i)).haveRead;
-        // console.log("id, name, msg, like, haveRead is ",i,name,msg,like,haveRead);
+
+    let users = JSON.parse(window.localStorage.getItem("userList"));
+
+    for (let i=0; i < numUsers; i++) {
+        let name = users[i].name;
+        let msg = users[i].msg;
+        let like = users[i].like;
+        let haveRead = users[i].haveRead;
+        console.log(">> in display cards, id is:",i,"; name:",name,"; msg:",msg,"; like:",like,"; haveRead:",haveRead);
         createCard(i, name, msg, like, haveRead);
     }
 }
 
 // helper function of painting card-container
-function paintCardContainer (newLi,haveRead) {
+function paintCardContainer(newLi, haveRead) {
     if (haveRead === true)
         newLi.style.boxShadow = "3px 3px 3px 3px grey";
     else
@@ -62,21 +62,17 @@ function paintCardContainer (newLi,haveRead) {
     newLi.style.filter = "blur(2px)";
 }
 
-
 // helper function of showing card with information
 function createCard(id, inputName, inputMsg, like, haveRead) {
 
+    if (like > 0 && haveRead === false) {
+        alert("something wrong with the information!");
+    }
+
     let newLi = document.createElement('li');
     newLi.className = 'card-container';
+    newLi.id = "number-"+id+"-card";
     paintCardContainer(newLi,haveRead);
-
-    newLi.onclick = function() {
-        if (haveRead === false) {
-            newLi.style.boxShadow = "3px 3px 3px 3px grey";
-        }
-        haveRead = true;
-        window.localStorage.setItem(id, JSON.stringify( { name:inputName, msg:inputMsg, like:like, haveRead:true } ));
-    };
 
     newLi.onmouseenter = function() {
         newLi.style.boxShadow = "3px 3px 3px 3px #fbc8ec";
@@ -86,8 +82,25 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
     }
 
     newLi.onmouseleave = function() {
-        paintCardContainer(newLi,haveRead);
+        paintCardContainer(newLi, haveRead);
     }
+
+    newLi.onclick = function() {
+        if (haveRead === false) {
+            newLi.style.boxShadow = "3px 3px 3px 3px grey";
+        }
+        haveRead = true;
+
+        let localStore = JSON.parse(window.localStorage.getItem("userList"));
+
+        for (let i in localStore) {
+            if (this.id === "number-"+i+"-card") {
+                localStore[i].haveRead = true;
+            }
+        }
+
+        window.localStorage.setItem("userList", JSON.stringify(localStore));
+    };
 
 
     let innerDiv = document.createElement('div');
@@ -125,23 +138,37 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
     let iconLike = document.createElement('i');
     let iconDel = document.createElement('i');
     iconLike.className = 'fas fa-heart';
+    iconLike.style.gap = "2px";
     iconLike.innerText = like;
     iconDel.className = 'fas fa-trash-alt';
 
     btnLike.onclick = function(){
         like++;
         iconLike.innerText = like;
-        iconLike.style.gap = "2px";
-        window.localStorage.setItem(id, JSON.stringify( { name:inputName, msg:inputMsg, like:like, haveRead:haveRead } ));
+
+        let localStore = JSON.parse(window.localStorage.getItem("userList"));
+        for (let i in localStore) {
+            if (this.parentElement.parentElement.id === "number-"+i+"-card") {
+                localStore[i].like = like;
+            }
+        }
+        window.localStorage.setItem("userList", JSON.stringify(localStore));
     };
 
     btnDel.onclick = function(){
         let div = this.parentElement.parentElement;
         div.style.display = "none";
-        console.log("before delete, the localStorage is ",window.localStorage, id);
-        window.localStorage.removeItem(id);
-        console.log("after delete, the localStorage is ",window.localStorage);
+
+        let localStore = JSON.parse(window.localStorage.getItem("userList"));
+        for (let i in localStore) {
+            if (div.id === "number-"+i+"-card") {
+                localStore.splice(i,1);
+            }
+        }
+        window.localStorage.setItem("userList", JSON.stringify(localStore));
     };
+
+    // btnDel.addEventListener('click', function(){deleteMsg(id, this)}, true);
 
     btnLike.appendChild(iconLike);
     btnDel.appendChild(iconDel);
@@ -159,6 +186,8 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
 // function of submit button
 function submitInput(e) {
     e.preventDefault();
+
+    let id = countUser(); // index starting from 0
     let inputName = document.getElementById('msger_name').value;
     let inputMsg = document.getElementById('msger_content').value;
     let like = 0;
@@ -167,29 +196,43 @@ function submitInput(e) {
     if (inputName === '')
         inputName = 'Guest';
 
-    console.log("in submit button, like is ", JSON.parse(like));
-    createCard(countUser()+1, inputName, inputMsg, JSON.parse(like), haveRead);
+    // console.log("in submit button, like is ", JSON.parse(like));
+    createCard(id, inputName, inputMsg, like, haveRead);
     document.getElementById('msger_name').value = '';
     document.getElementById('msger_content').value = '';
 
-    save(inputName,inputMsg, like, haveRead);
+    save(id, inputName,inputMsg, like, haveRead);
 }
 
-// save user info to web storage
-function save(inputName, inputMsg, inputLike ,haveRead){
-    let curNum = countUser();
+// store user info to web storage after clicking submit
+function save(id ,inputName, inputMsg, inputLike ,haveRead){
+    // let curNum = countUser();
 
     let guest={
-        id: curNum+1,
+        id: id,
         name: inputName,
         msg:inputMsg,
         like: inputLike,
         haveRead: haveRead
     };
 
-    window.localStorage.setItem(guest.id, JSON.stringify(( ({ name, msg, like, haveRead }) => ({ name, msg, like, haveRead }))(guest)));
+    // window.localStorage.setItem(guest.id, JSON.stringify(( ({ name, msg, like, haveRead }) => ({ name, msg, like, haveRead }))(guest)));
+    // console.log(">> in save, the guest being saved is ", guest);
+    let localStore = JSON.parse(window.localStorage.getItem("userList"));
+    localStore.push(guest);
+    window.localStorage.setItem("userList", JSON.stringify(localStore));
+    //window.localStorage.setItem(guest.id, JSON.stringify(guest));
 }
 
 
 let buttonSubmit = document.getElementById("submit_msg");
 buttonSubmit.addEventListener('click', submitInput, true);
+
+// helper function to delete in local storage
+function deleteMsg(id, tt) {
+    let div = tt.parentElement.parentElement;
+    div.style.display = "none";
+    console.log("before delete, the localStorage is ",window.localStorage, id);
+    window.localStorage.removeItem(id);
+    console.log("after delete, the localStorage is ",window.localStorage);
+}

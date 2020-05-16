@@ -20,22 +20,6 @@
     text-align: center;
 }
 
-/*.card-container {
-    box-shadow: 3px 3px 3px 3px grey;
-    text-align: center;
-    padding: 15px 40px 15px 40px;
-    margin-bottom: 20px;
-    margin-top:20px;
-    opacity:0.8;
-    filter: blur(2px);
-}*/
-
-/*.card-container:hover{
-    box-shadow: 3px 3px 3px 3px #fbc8ec;
-    opacity: 1;
-    filter:blur(0);
-    transition: 0.2s;
-}*/
 
 .card-button {
     text-decoration: none;
