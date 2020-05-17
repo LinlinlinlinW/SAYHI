@@ -12,7 +12,6 @@
 
 
 <body onload="load()">
-
 <! header>
 <div id = "nav-bar">
     <nav id = "nav-menu" role="navigation">
@@ -25,18 +24,21 @@
     <p><span>"SAY HI"</span></p>
     <img id='picture' src="img/cuteProfile.jpg" alt="CUTEEEE">
     <!div>
-        <!button id="add_msg" class="button_stuff" onclick="moveVertical();"><!/button>
-        <!button id="clear_msg" class="button_stuff" onclick="moveHorizontal();"><!/button>
+        <!button id="add_msg" class="button_stuff"
+    onclick="moveVertical();"><!/button>
+        <!button id="clear_msg" class="button_stuff"
+    onclick="moveHorizontal();"><!/button>
     <!/div>
 </div>
 
 <! message block>
 <section class = "row" id = "msg_block">
-
     <!add message>
+
     <div class = "column" id = "msg_block_added_msg">
+        <label class = "msg_block_header">WELCOME</label><br>
+
         <form id = "msg_form">
-            <label class = "msg_block_header">WELCOME</label><br>
             <label class = "label" for = "msger_name">Name</label><br>
             <textarea class = "msg_text_area" id = "msger_name" placeholder="Enter your name" ></textarea><br>
 
@@ -53,10 +55,9 @@
         <ul class="msg-cards" id="msg-cards">
 
         </ul>
-
     </div>
 </section>
-<!--<script type="text/javascript" src="js/userList.json"></script>-->
 <script type = "text/javascript" src = "js/mainFunctions.js"></script>
+<script type = "text/javascript" src = "js/uiFunctions.js"></script>
 </body>
 </html>

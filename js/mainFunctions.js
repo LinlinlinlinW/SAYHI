@@ -23,11 +23,7 @@ function countUser() {
 
 // onload the history right after loading the website
 function load() {
-    console.log(">>> in load");
     window.localStorage.setItem("userList", JSON.stringify(userList));
-
-    console.log(">>> the number of users right now is ", countUser());
-
     // display all cards
     displayCards();
 }
@@ -110,7 +106,7 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
     innerDiv2.className = 'card-container-second-row';
 
     let innerDiv3 = document.createElement('div');
-    innerDiv3.className = 'card-container-msg-buttons';
+    innerDiv3.className = 'card-container-third-row';
 
 
     // card-container-first-row
@@ -123,7 +119,7 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
 
 
     // card-container-second-row
-    let newMsg = document.createElement('msger_left_msg');
+    let newMsg = document.createElement('p');
     newMsg.className = 'msger_left_msg';
     newMsg.innerHTML = inputMsg;
     innerDiv2.appendChild(newMsg);
@@ -133,8 +129,8 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
     let btnLike = document.createElement('button');
     let btnDel = document.createElement('button');
     btnLike.className = 'card-button';
-
     btnDel.className = 'card-button';
+
     let iconLike = document.createElement('i');
     let iconDel = document.createElement('i');
     iconLike.className = 'fas fa-heart';
@@ -168,8 +164,6 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
         window.localStorage.setItem("userList", JSON.stringify(localStore));
     };
 
-    // btnDel.addEventListener('click', function(){deleteMsg(id, this)}, true);
-
     btnLike.appendChild(iconLike);
     btnDel.appendChild(iconDel);
     innerDiv3.appendChild(btnLike);
@@ -196,7 +190,6 @@ function submitInput(e) {
     if (inputName === '')
         inputName = 'Guest';
 
-    // console.log("in submit button, like is ", JSON.parse(like));
     createCard(id, inputName, inputMsg, like, haveRead);
     document.getElementById('msger_name').value = '';
     document.getElementById('msger_content').value = '';
@@ -206,8 +199,6 @@ function submitInput(e) {
 
 // store user info to web storage after clicking submit
 function save(id ,inputName, inputMsg, inputLike ,haveRead){
-    // let curNum = countUser();
-
     let guest={
         id: id,
         name: inputName,
@@ -216,23 +207,11 @@ function save(id ,inputName, inputMsg, inputLike ,haveRead){
         haveRead: haveRead
     };
 
-    // window.localStorage.setItem(guest.id, JSON.stringify(( ({ name, msg, like, haveRead }) => ({ name, msg, like, haveRead }))(guest)));
-    // console.log(">> in save, the guest being saved is ", guest);
     let localStore = JSON.parse(window.localStorage.getItem("userList"));
     localStore.push(guest);
     window.localStorage.setItem("userList", JSON.stringify(localStore));
-    //window.localStorage.setItem(guest.id, JSON.stringify(guest));
 }
 
 
 let buttonSubmit = document.getElementById("submit_msg");
 buttonSubmit.addEventListener('click', submitInput, true);
-
-// helper function to delete in local storage
-function deleteMsg(id, tt) {
-    let div = tt.parentElement.parentElement;
-    div.style.display = "none";
-    console.log("before delete, the localStorage is ",window.localStorage, id);
-    window.localStorage.removeItem(id);
-    console.log("after delete, the localStorage is ",window.localStorage);
-}

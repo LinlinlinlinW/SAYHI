@@ -1,23 +1,30 @@
-@media screen {
-
+.msger_left_msg, .msger_shown_name {
+    word-wrap: break-word;
 }
+
 .card-container-first-row, .card-container-second-row  {
-    white-space: nowrap;
     text-align: left;
-    display: block;
+    word-wrap: break-word;
+    padding-left: 5%;
 }
 .card-container-third-row {
     text-align: right;
     display: block;
+    padding-right: 10%;
 }
 
 .msg-cards {
     list-style: none;
+    text-align: center;
 }
 
+.card-container {
+    background-color: transparent;
+}
+
+
 .cards{
-    padding: 20px 40px 20px 40px;
-    text-align: center;
+    padding: 20px 40px;
 }
 
 
@@ -26,6 +33,7 @@
     outline: none;
     background-color: transparent;
     border:none;
+    text-align: right;
 }
 .fas {
     color: #FFFFFF;
@@ -45,16 +53,7 @@
 }
 
 .msg_block_header {
-    /*transform: translateX(0px) translateY(0px);
-    transition-property: opacity,transform;
-    transition-duration: 750ms, 750ms;
-    transition-timing-function: ease, ease;
-    transition-delay: 0s, 0s;*/
-
-    position: relative;
-    margin-right: 100px;
-    margin-left: 100px;
-    margin-bottom: 20px;
+    text-align: center;
     font-size: 2rem;
 }
 
@@ -63,25 +62,26 @@
     display: table;
     clear:both;
 }
+
 #msg_block {
     /*top right bottom left*/
-    margin: 40px 20px 40px 20px;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 #msg_block_stored_msg, #msg_block_added_msg{
-    width: 40%;
+    width: 50%;
     background-color: transparent;
-    text-align: center;
 }
 
 .column{
-    float: left;
-    padding: 10px;
-    height: 300px;
+    padding: 20px;
     text-align: center;
+    display: inline-block;
 }
 .row {
     text-align: center;
+    display: block;
 }
 
 .nav-buttons:hover{
@@ -107,7 +107,7 @@
     padding-top:15px;
     padding-bottom: 15px;
     text-align: center;
-    z-index: 1;
+    z-index: 5;
 
 }
 #container-div {
@@ -132,11 +132,11 @@ img {
 
 .button_stuff{
     position:relative;
-    z-index: 1000;
     background-color: #fbc8ec;
     color: #FFFFFF;
     outline: none;
     border: none;
+    z-index: 0;
 }
 .button_stuff:hover{
     background-color: black;
