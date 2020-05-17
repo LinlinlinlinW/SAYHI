@@ -18,7 +18,14 @@ let userList = [
 
 // helper function count the number of users
 function countUser() {
-    return JSON.parse(window.localStorage.getItem("userList")).length;
+    let localStore = JSON.parse(window.localStorage.getItem("userList"));
+    let num;
+    if (localStore === null) {
+        num = 0;
+    } else {
+        num = localStore.length;
+    }
+    return num;
 }
 
 // onload the history right after loading the website
@@ -97,7 +104,6 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
 
         window.localStorage.setItem("userList", JSON.stringify(localStore));
     };
-
 
     let innerDiv = document.createElement('div');
     innerDiv.className = 'card-container-first-row';
@@ -212,6 +218,21 @@ function save(id ,inputName, inputMsg, inputLike ,haveRead){
     window.localStorage.setItem("userList", JSON.stringify(localStore));
 }
 
+// clear all the messages
+function clearMsg(){
+    console.log("in clearing messages")
+    let localStore = JSON.parse(window.localStorage.getItem("userList"));
+    let numOfUsers = countUser();
+    console.log("numOfUsers is ", numOfUsers)
+    for (let k=0; k<numOfUsers; k++) {
+        console.log ("k is ",k)
+        let id = localStore[k].id;
+        console.log("id is ", id)
+        document.getElementById("number-"+id+"-card").style.display = "none";
+    }
+    window.localStorage.clear();
+    document.getElementById("clear_msg").style.display = "none"
+}
 
 let buttonSubmit = document.getElementById("submit_msg");
 buttonSubmit.addEventListener('click', submitInput, true);
