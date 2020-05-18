@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium Web">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
     <title>SAY HI</title>
 </head>
 
@@ -15,20 +15,16 @@
 <! header>
 <div id = "nav-bar">
     <nav id = "nav-menu" role="navigation">
-        <a class="nav-buttons nav-link" href = "index.html">HOME</a>
+        <a class="nav-buttons nav-link" href = "main.html">HOME</a>
         <a class="nav-buttons nav-link" href = "contact.html">ABOUT</a>
     </nav>
 </div>
 
 <div id = "container-div">
-    <p><span>"SAY HI"</span></p>
-    <img id='picture' src="img/cuteProfile.jpg" alt="CUTEEEE">
-    <!div>
-        <!button id="add_msg" class="button_stuff"
-    onclick="moveVertical();"><!/button>
-        <!button id="clear_msg" class="button_stuff"
-    onclick="moveHorizontal();"><!/button>
-    <!/div>
+    <ul class = "title-ul">
+        <li class = "scroll text" data-rate="-1.1" data-direction="vertical">SAY</li>
+        <li class = "scroll text" data-rate="-1.5" data-direction="vertical">HI</li>
+    </ul>
 </div>
 
 <! message block>
@@ -36,14 +32,14 @@
     <!add message>
 
     <div class = "column" id = "msg_block_added_msg">
-        <label class = "msg_block_header">WELCOME</label><br>
+        <label class = "msg_block_header text">WELCOME</label><br>
 
         <form id = "msg_form">
-            <label class = "label" for = "msger_name">Name</label><br>
-            <textarea class = "msg_text_area" id = "msger_name" placeholder="Enter your name" ></textarea><br>
+            <label class = "label text" for = "msger_name">Name</label><br>
+            <textarea class = "msg_text_area text" id = "msger_name" placeholder="Enter your name" ></textarea><br>
 
-            <label class = "label" for = "msger_content">Message*</label><br>
-            <textarea class = "msg_text_area" id = "msger_content" placeholder="Enter your message" required = "required"></textarea><br>
+            <label class = "label text" for = "msger_content">Message*</label><br>
+            <textarea class = "msg_text_area text" id = "msger_content" placeholder="Enter your message" required = "required"></textarea><br>
 
             <button class = "button_stuff" id = "submit_msg">submit</button>
         </form>
@@ -51,7 +47,7 @@
 
     <!store message>
     <div class = "column" id = "msg_block_stored_msg">
-        <label class = "msg_block_header">HISTORY</label><br>
+        <label class = "msg_block_header text">HISTORY</label><br>
         <button id="clear_msg" class="button_stuff" onclick="clearMsg();">CLEAR</button>
 
         <ul class="msg-cards" id="msg-cards">
@@ -60,6 +56,6 @@
     </div>
 </section>
 <script type = "text/javascript" src = "js/mainFunctions.js"></script>
-<script type = "text/javascript" src = "js/uiFunctions.js"></script>
+<script type = "text/javascript" src = "js/uiController.js"></script>
 </body>
 </html>

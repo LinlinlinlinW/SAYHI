@@ -46,23 +46,9 @@ function displayCards(){
         let msg = users[i].msg;
         let like = users[i].like;
         let haveRead = users[i].haveRead;
-        console.log(">> in display cards, id is:",i,"; name:",name,"; msg:",msg,"; like:",like,"; haveRead:",haveRead);
+        // console.log(">> in display cards, id is:",i,"; name:",name,"; msg:",msg,"; like:",like,"; haveRead:",haveRead);
         createCard(i, name, msg, like, haveRead);
     }
-}
-
-// helper function of painting card-container
-function paintCardContainer(newLi, haveRead) {
-    if (haveRead === true)
-        newLi.style.boxShadow = "3px 3px 3px 3px grey";
-    else
-        newLi.style.boxShadow = "3px 3px 3px 3px #fbc8ec";
-    newLi.style.textAlign = "center";
-    newLi.style.padding = "15px 40px 15px 40px";
-    newLi.style.marginBottom = "20px";
-    newLi.style.marginTop = "20px";
-    newLi.style.opacity = "0.8";
-    newLi.style.filter = "blur(2px)";
 }
 
 // helper function of showing card with information
@@ -183,6 +169,20 @@ function createCard(id, inputName, inputMsg, like, haveRead) {
     list.insertBefore(newLi,list.childNodes[0]);
 }
 
+// helper function of painting card-container
+function paintCardContainer(newLi, haveRead) {
+    if (haveRead === true)
+        newLi.style.boxShadow = "3px 3px 3px 3px gray";
+    else
+        newLi.style.boxShadow = "3px 3px 3px 3px #fbc8ec";
+    newLi.style.textAlign = "center";
+    newLi.style.padding = "15px 40px 15px 40px";
+    newLi.style.marginBottom = "20px";
+    newLi.style.marginTop = "20px";
+    newLi.style.opacity = "0.8";
+    newLi.style.filter = "blur(2px)";
+}
+
 // function of submit button
 function submitInput(e) {
     e.preventDefault();
@@ -220,14 +220,14 @@ function save(id ,inputName, inputMsg, inputLike ,haveRead){
 
 // clear all the messages
 function clearMsg(){
-    console.log("in clearing messages")
+    //console.log("in clearing messages")
     let localStore = JSON.parse(window.localStorage.getItem("userList"));
     let numOfUsers = countUser();
-    console.log("numOfUsers is ", numOfUsers)
+    //console.log("numOfUsers is ", numOfUsers)
     for (let k=0; k<numOfUsers; k++) {
-        console.log ("k is ",k)
+        //console.log ("k is ",k)
         let id = localStore[k].id;
-        console.log("id is ", id)
+        //console.log("id is ", id)
         document.getElementById("number-"+id+"-card").style.display = "none";
     }
     window.localStorage.clear();
@@ -236,3 +236,9 @@ function clearMsg(){
 
 let buttonSubmit = document.getElementById("submit_msg");
 buttonSubmit.addEventListener('click', submitInput, true);
+
+//console.log("reach here!!")
+let scrollNum = document.getElementsByClassName("scroll").length;
+let titleUL = document.getElementsByClassName("title-ul")[0];
+titleUL.style.gridTemplateColumns="repeat("+scrollNum+", auto)";
+//console.log("reach here!!!")

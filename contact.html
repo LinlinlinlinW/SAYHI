@@ -3,22 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contactStyle.css">
+    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium Web">
-
     <title>SAY HI</title>
+<!--    <link rel = "icon" href = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png" type = "image/x-icon">-->
 </head>
 
 <body>
 
-    <div id = "nav-bar">
-        <nav id = "nav-menu" role="navigation">
-            <a class="nav-buttons nav-link" href = "index.html">HOME</a>
-            <a class="nav-buttons nav-link" href = "contact.html">ABOUT</a>
-        </nav>
+<div id = "nav-bar">
+    <nav id = "nav-menu" role="navigation">
+        <a class="nav-buttons nav-link" href = "main.html">HOME</a>
+        <a class="nav-buttons nav-link" href = "contact.html">ABOUT</a>
+    </nav>
+</div>
+
+<div id = "container-div">
+    <ul class = "title-ul">
+        <li class = "scroll text" data-rate="-1.1" data-direction="vertical">ABOUT</li>
+        <li class = "scroll text" data-rate="-1.5" data-direction="vertical">ME</li>
+    </ul>
+<!--    <img class='scroll picture' src="img/cuteProfile.jpg" alt="CUTEEEE"  data-rate="-1" data-direction="horizontal">-->
+</div>
+
+<section class="row">
+
+    <div class = "column" id = "msg_block_added_msg">
+        <label class = "msg_block_header text">Bolin Wang</label><br>
+        <div id="personal-info">
+            <img id="profile" src="img/cuteProfile.jpg" alt="CUTEEEE">
+            <p id="selfIntro"> introduction to be determined </p>
+        </div>
+
     </div>
 
+    <div class = "column" id = "msg_block_stored_msg">
+        <label class = "msg_block_header text">MAIN PROJECTS</label><br>
+        <!--    <button id="clear_msg" class="button_stuff" onclick="clearMsg();">CLEAR</button>-->
+        <!--    <ul class="msg-cards" id="msg-cards">-->
 
-    <script type = "text/javascript" src = "js/introFunctions.js"></script>
+
+        <div class="timeline">
+            <div class="container left">
+                <div class="content" id="project-SAYHI" onclick="jumpPage(this.id)">
+                    <h2 class="project-time">May 2020</h2>
+                    <h2 class="project-title">SAY HI</h2>
+                    <p class="project-intro">Message Display website</p>
+                </div>
+            </div>
+
+            <div class="container right">
+                <div class="content" id="project-SuperRent" onclick="jumpPage(this.id)">
+                    <h2 class="project-time">Sept 2019</h2>
+                    <h2 class="project-title">SuperRent</h2>
+                    <p class="project-intro">car rental system</p>
+                </div>
+            </div>
+
+            <div class="container left">
+                <div class="content" id="project-TimeManager" onclick="jumpPage(this.id)">
+                    <h2 class="project-time">Sept 2018</h2>
+                    <h2 class="project-title">TimeManager</h2>
+                    <p class="project-intro">Message Display website</p>
+                </div>
+            </div>
+
+            <div class="container right">
+                <div class="content" id = "project-TankFighter" onclick="jumpPage(this.id)">
+                    <h2 class="project-time">May 2018</h2>
+                    <h2 class="project-title">TankFighter</h2>
+                    <p class="project-intro">Classical Tank War</p>
+                </div>
+            </div>
+        </div>
+
+<!--        </ul>-->
+    </div>
+</section>
+
+
+
+
+<script type = "text/javascript" src = "js/contactFunctions.js"></script>
+<script type = "text/javascript" src = "js/uiController.js"></script>
 </body>
 </html>
