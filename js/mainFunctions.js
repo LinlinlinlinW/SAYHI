@@ -30,7 +30,9 @@ function countUser() {
 
 // onload the history right after loading the website
 function load() {
-    window.localStorage.setItem("userList", JSON.stringify(userList));
+    if (window.localStorage.getItem("userList") === null) {
+        window.localStorage.setItem("userList", JSON.stringify(userList));
+    }
     // display all cards
     displayCards();
 }
@@ -234,8 +236,19 @@ function clearMsg(){
     document.getElementById("clear_msg").style.display = "none"
 }
 
+function cleanInput(d) {
+    d.preventDefault();
+    document.getElementById('msger_name').value = '';
+    document.getElementById('msger_content').value = '';
+}
+
 let buttonSubmit = document.getElementById("submit_msg");
 buttonSubmit.addEventListener('click', submitInput, true);
+
+let buttonClean = document.getElementById("clean_msg");
+buttonClean.addEventListener("click", cleanInput, true);
+
+
 
 //console.log("reach here!!")
 let scrollNum = document.getElementsByClassName("scroll").length;

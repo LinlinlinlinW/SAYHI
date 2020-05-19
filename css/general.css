@@ -15,20 +15,21 @@
 
 
 #msg_block_added_msg, #msg_block_stored_msg{
-    margin: 40px;
-    padding: 20px;
-    width: 50%;
+    margin: 30px;
+    padding: 10px;
+    width: 60%;
     background-color: transparent;
     box-shadow: 3px 3px 3px 3px gray;
 }
 
 .msg_block_header {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+
 }
 
 .column{
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     display: inline-block;
 }
@@ -36,7 +37,7 @@
 .row {
     text-align: center;
     display: block;
-    padding: 40px;
+    padding: 20px;
 }
 
 #container-div {
