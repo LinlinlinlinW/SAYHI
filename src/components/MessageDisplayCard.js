@@ -12,12 +12,29 @@ import store from "../store";
 
 class MessageDisplayCard extends React.Component {
     render() {
-        const messageList = store.getState();
+       // const messageList = store.getState();
+        let messageList = [
+                    {
+                        "id": 0,
+                        "name": "John Doe",
+                        "msg": "Message shown here!",
+                        "like" : 0,
+                        "haveRead": false
+                    },
+                    {
+                        "id": 1,
+                        "name": "Obaseki Nosa",
+                        "msg": "Message shown here!",
+                        "like" : 3,
+                        "haveRead": true
+                    }
+                ];
         console.log(">> messageList is ", JSON.stringify(messageList));
 
-        const messages = messageList.map((eachMessage) => (
-           <Message id={eachMessage.id} name={eachMessage.name} msg={eachMessage.msg} like={eachMessage.like} haveRead={eachMessage.haveRead} />
-        ));
+        const messages = messageList.map(
+            (eachMessage) =>
+                (<Message id={eachMessage.id} name={eachMessage.name} msg={eachMessage.msg} like={eachMessage.like} haveRead={eachMessage.haveRead} />)
+            );
 
         return (
             <div id={"msg_block_stored_msg"}>

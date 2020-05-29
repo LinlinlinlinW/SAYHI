@@ -41,7 +41,7 @@ class Message extends React.Component{
 
 const mapActionsToProps =()=> ({
     clickLike: likeMessage,
-
+    clickDelete: deleteMessage,
 })
 
 const mapStateToProps = (state) => {

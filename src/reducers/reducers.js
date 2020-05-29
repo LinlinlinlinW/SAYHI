@@ -4,8 +4,7 @@ import store from "../store";
 
 // TODO: step3: goto reducer and add specific actions
 
-
-function reducer (state = [
+let prefilledMsg = [
     {
         "id": 0,
         "name": "John Doe",
@@ -20,7 +19,9 @@ function reducer (state = [
         "like" : 3,
         "haveRead": true
     }
-], action) {
+];
+
+function reducer (state = prefilledMsg, action) {
     switch (action.type) {
 
         case actions.MSG_ADD:
@@ -51,3 +52,9 @@ function reducer (state = [
 const rootReducer = combineReducers(reducer);
 export default rootReducer;
 
+// addToList = (name, msg) => {
+//     let id = this.state.list.length;
+//     let element ={"id":id,"name": name,"msg": msg,"like": 0, "haveRead": false};
+//     this.setState({list: this.state.list.push(element)});
+//     console.log(this.state.list)
+// }
