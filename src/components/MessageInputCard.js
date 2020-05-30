@@ -43,13 +43,12 @@ class MessageInputCard extends Component {
                            value={this.props.msg}/>
                 <button className={"button_stuff"}
                         onClick={() =>
-                            (
-                                this.props.addMessage({
-                                id: nextId(),
-                                name: this.state.name,
-                                msg: this.state.message,
-                                like: 0,
-                                haveRead: false}))}>ADD</button>
+                            this.props.addMessage({
+                            id: nextId(),
+                            name: this.state.name,
+                            msg: this.state.message,
+                            like: 0,
+                            haveRead: false})}>ADD</button>
             </div>
         );
     }

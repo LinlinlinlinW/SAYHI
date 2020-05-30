@@ -24,9 +24,13 @@ class Message extends Component{
         this.props.clickDelete(this.props.id);
     }
 
+    handleViewDetail = () =>{
+
+    }
+
     render(){
         return(
-            <div className={"card-container"}>
+            <div className={"card-container"} onClick={this.handleViewDetail}>
                 <div className={"card-container-first-row"}>{this.props.name}</div>
                 <div className={"card-container-second-row"}>{this.props.msg}</div>
                 <div className={"card-container-third-row"}>
