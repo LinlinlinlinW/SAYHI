@@ -21,7 +21,7 @@ export const likeMessage = id => {
     console.log(">> Message being liked is ", id);
     return {
         type : actions.MSG_LIKE,
-        payload: 1
+        payload: id
     };
 };
 
@@ -37,7 +37,8 @@ export const readMessage = id => {
 export const countMsgAmount = () => {
     console.log(">> The number of current message is ");
     return {
-        type: actions.TRACK_MSG_AMOUNT
+        type: actions.TRACK_MSG_AMOUNT,
+        payload: 1
     }
 }
 

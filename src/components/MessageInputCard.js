@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 import "../index.css"
 import { connect } from 'react-redux';
 import { addMessage } from "../actions/actions";
+import nextId from "react-id-generator";
 
 
-
-class MessageInputCard extends React.Component {
+class MessageInputCard extends Component {
 
     handleNameInput = nname => {
         this.setState({
@@ -33,7 +33,8 @@ class MessageInputCard extends React.Component {
                            onChange = {this.handleMsgInput}
                            value={this.props.msg}/>
                 <button className={"button_stuff"}
-                        onClick={() => this.props.addMessage(this.props.id, this.props.name, this.props.msg, this.props.like, this.props.haveRead)}>ADD</button>
+                        onClick={() =>
+                            this.props.addMessage({id: nextId(), name: this.state.name, msg:this.state.message, like: 0, haveRead: false})}>ADD</button>
             </div>
         );
     }
@@ -43,13 +44,18 @@ class MessageInputCard extends React.Component {
 const mapStateToProps = (state) => { //name is by convention
     //state has entire state of app!!
     let result = { name: state.name, msg: state.msg };
-    console.log(">> In MessageInputCard, state is ", result);
+    console.log(">> In Input, state is ", result);
     return result; //now it will appear as props
 }
 
-export default connect(mapStateToProps, { addMessage })(MessageInputCard);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addMessage: (ele) => dispatch(addMessage(ele))
+    }
+}
 
-
+// export default connect(mapStateToProps, { addMessage })(MessageInputCard);
+export default connect(null, mapDispatchToProps)(MessageInputCard)
 
 // const unsubscribe = myStore.subscribe(() => {
 //     // TODO: something we do in the UI layer, some UI components should subscribe the store changes

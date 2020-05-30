@@ -4,11 +4,9 @@ import MessageInputCard from "./MessageInputCard";
 import MessageDisplayCard from "./MessageDisplayCard";
 import Navbar from "./Navbar";
 
-
 function App(){
     return (
         <div className="App">
-            <Navbar />
             <MessageInputCard />
             <MessageDisplayCard />
         </div>
