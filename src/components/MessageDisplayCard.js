@@ -1,17 +1,10 @@
 import React, {Component} from 'react';
 import "../index.css"
 import Message from "./Message";
-// import { connect } from 'react-redux';
-// import {readMessage, likeMessage, deleteMessage} from "./actions/actions";
-import myStore from "../store"
-import nextId from "react-id-generator";
 import {connect} from 'react-redux'
 
 class MessageDisplayCard extends Component {
     render() {
-
-        console.log(">> In Display, get State test: ", this.props.messageList);
-
         const messages = this.props.messageList.map(
             (eachMessage) =>
                 (<Message key={eachMessage.id}
@@ -34,7 +27,6 @@ class MessageDisplayCard extends Component {
 
 const mapStateToProps = state => {
     return {
-        // TODO might have error, why reducers?
         messageList: state.reducers
     }
 }

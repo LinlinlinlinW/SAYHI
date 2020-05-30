@@ -1,6 +1,4 @@
-import {combineReducers} from 'redux';
 import * as actions from '../actions/actionTypes';
-import store from "../store";
 import nextId from "react-id-generator";
 
 // TODO: step3: goto reducer and add specific actions
@@ -46,7 +44,6 @@ export default function myReducer (state = [
             return newResult;
         }
 
-
         case actions.MSG_LIKE:{
             let newRes = state.map((ele) => {
                 if(ele.id === action.payload) {
@@ -57,7 +54,6 @@ export default function myReducer (state = [
             })
             return newRes;
         }
-
 
         default:
             return state;

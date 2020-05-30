@@ -20,7 +20,7 @@ class Message extends Component{
 
     handleClickDelete = (event) => {
         event.preventDefault();
-        console.log(">> in handleClickDelete, id is ", this.props.id)
+        //console.log(">> in handleClickDelete, id is ", this.props.id)
         this.props.clickDelete(this.props.id);
     }
 
