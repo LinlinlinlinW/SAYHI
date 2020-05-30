@@ -25,20 +25,13 @@ export const likeMessage = id => {
     };
 };
 
-export const readMessage = id => {
-    console.log(">> Message being read is ", id);
-    return {
-        type : actions.MSG_RESOLVED,
-        payload: id
-    };
-}
+// export const readMessage = id => {
+//     console.log(">> Message being read is ", id);
+//     return {
+//         type : actions.MSG_RESOLVED,
+//         payload: id
+//     };
+// }
 
-// 功能待定！！！
-export const countMsgAmount = () => {
-    console.log(">> The number of current message is ");
-    return {
-        type: actions.TRACK_MSG_AMOUNT,
-        payload: 1
-    }
-}
+
 

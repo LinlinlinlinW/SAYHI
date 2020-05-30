@@ -1,12 +1,12 @@
-.card-container-first-row, .card-container-second-row  {
+.card-container-first-row, .card-container-second-row, .card-container-third-row  {
   text-align: center;
   word-wrap: break-word;
   padding: 10px 2px 5px 5px;
-}
-.card-container-third-row {
-  text-align: center;
   display: block;
-  padding: 5px;
+}
+.card-container-first-row {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .card-container {
@@ -17,6 +17,21 @@
   display: block;
   box-shadow: 3px 3px 3px 3px gray;
   margin:5px;
+}
+
+.msg_block{
+  display: inline-block;
+  text-align: center;
+  margin: 30px;
+  padding: 10px;
+  width: 60%;
+  background-color: transparent;
+  box-shadow: 3px 3px 3px 3px gray;
+}
+
+.msg-cards {
+  list-style: none;
+  text-align: center;
 }
 
 .button_icon{
@@ -38,28 +53,60 @@
   color: #fbc8ec;
   transition:0.2s;
 }
-
-#msg_block_stored_msg, #msg_block_added_msg{
-  display: block;
+.title-ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  /*justify-content: defines how the browser distributes space between
+  and around content items along the main-axis of a flex container,
+  and the inline axis of a grid container.*/
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  height:100vh;
+  font-size: 60px;
+}
+#container-div {
+  /*display: block;*/
   text-align: center;
-  margin: 30px;
-  padding: 10px;
-  width: 60%;
+  background-color: transparent;
+  /*margin-top: 70px;*/
+}
+
+.nav-buttons:hover{
+  color: whitesmoke;
+  transition: 0.27s;
+}
+.nav-buttons{
+  display:inline-block;
+  padding: 10px 17px 10px 17px;
+  color: #fbc8ec;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+#nav-menu {
+  text-align: center;
+  background-color: transparent;
+}
+
+#nav-bar {
+  top:0;
+  position: fixed;
+  width: 100%;
+  display: block;
+  padding-top:15px;
+  padding-bottom: 15px;
+  text-align: center;
+  z-index: 5;
+  background-color: #2c2c2c;
+}
+
+.pop_up_window {
+  display: block;
   background-color: transparent;
   box-shadow: 3px 3px 3px 3px gray;
-}
-
-.msg-cards {
-  list-style: none;
-  text-align: center;
-}
-
-body{
-  text-align: center;
-}
-
-.root{
-  text-align: center;
 }
 
 * {
@@ -68,7 +115,8 @@ body{
   font-family: Titillium Web;
   box-sizing: border-box;
   margin: 0;
-  text-align: center;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }

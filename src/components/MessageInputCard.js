@@ -29,7 +29,7 @@ class MessageInputCard extends Component {
 
     render() {
         return (
-            <div id={"msg_block_added_msg"}>
+            <div className={"msg_block"}>
                 <h1>WELCOME</h1>
                 <textarea  id={"msger_name"}
                            placeholder={"Enter your name"}
@@ -48,7 +48,7 @@ class MessageInputCard extends Component {
                             name: this.state.name,
                             msg: this.state.message,
                             like: 0,
-                            haveRead: false})}>ADD</button>
+                            time: new Date().toLocaleString()})}>ADD</button>
             </div>
         );
     }

@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import "../index.css"
 import Message from "./Message";
-import ViewDetail from "./ViewDetail";
 import {connect} from 'react-redux'
+
 
 class MessageDisplayCard extends Component {
     render() {
@@ -13,15 +13,13 @@ class MessageDisplayCard extends Component {
                           name={eachMessage.name}
                           msg={eachMessage.msg}
                           like={eachMessage.like}
-                          haveRead={eachMessage.haveRead} />));
-
+                          haveRead={eachMessage.time} />));
         return (
-            <div id={"msg_block_stored_msg"}>
+            <div className={"msg_block"}>
                 <h1>HISTORY</h1>
                 <ul className={"msg-cards"}>
                     {messages}
                 </ul>
-                <ViewDetail />
             </div>
         )
     }

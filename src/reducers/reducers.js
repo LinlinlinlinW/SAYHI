@@ -9,14 +9,14 @@ export default function myReducer (state = [
         "name": "John Doe",
         "msg": "Message shown here!",
         "like" : 0,
-        "haveRead": false
+        "time": new Date().toLocaleString()
     },
     {
         "id": nextId(),
         "name": "Obaseki Nosa",
         "msg": "Message shown here!",
         "like" : 3,
-        "haveRead": true
+        "time": new Date().toLocaleString()
     }
 ], action) {
 
@@ -31,17 +31,6 @@ export default function myReducer (state = [
         case actions.MSG_DEL :{
             let rr = state.filter((ele) => ele.id !== action.payload)
             return rr;
-        }
-
-        case actions.MSG_RESOLVED: {
-            let newResult = state.map((ele) => {
-                if(ele.id === action.payload) {
-                    const haveRead = true
-                    return {...ele, like: haveRead}
-                } else
-                    return ele
-            })
-            return newResult;
         }
 
         case actions.MSG_LIKE:{
