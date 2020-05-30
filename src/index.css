@@ -49,6 +49,19 @@
   box-shadow: 3px 3px 3px 3px gray;
 }
 
+.msg-cards {
+  list-style: none;
+  text-align: center;
+}
+
+body{
+  text-align: center;
+}
+
+.root{
+  text-align: center;
+}
+
 * {
   flex-wrap: nowrap;
   background-color: #b7bad6;

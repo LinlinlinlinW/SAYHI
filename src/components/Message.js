@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import "../index.css";
-import { AiFillLike } from 'react-icons/ai'
+import { AiFillLike, AiFillEye, AiFillDelete } from 'react-icons/ai'
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { likeMessage, deleteMessage } from "../actions/actions"
 import { connect } from 'react-redux';
@@ -24,8 +24,8 @@ class Message extends Component{
         this.props.clickDelete(this.props.id);
     }
 
-    handleViewDetail = () =>{
-
+    handleViewDetail = (event) =>{
+        event.preventDefault();
     }
 
     render(){
@@ -39,11 +39,13 @@ class Message extends Component{
                         {this.props.like}
                     </button>
                     <button className={"button_stuff"} onClick={this.handleClickDelete}>
-                        <RiDeleteBin6Line className={"button_icon"} />
+                        <AiFillDelete className={"button_icon"} />
+                    </button>
+                    <button className={"button_stuff"} onClick={this.handleViewDetail}>
+                        <AiFillEye className={"button_icon"} />
                     </button>
                 </div>
             </div>
-
         )
     }
 }
