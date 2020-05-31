@@ -31,36 +31,44 @@ class MessageInputCard extends Component {
 
     render() {
         return (
-            <div className={"msg_block"}>
+            <div className={"msg_block row_column"}>
                 <h1>WELCOME</h1>
-                <textarea  id={"msger_name"}
-                           placeholder={"Enter your name"}
-                           required={"required"}
-                           onChange = {this.handleNameInput}
-                           value={this.state.name} />
-                <textarea  id={"msger_content"}
-                           placeholder={"Enter your message"}
-                           required={"required"}
-                           onChange = {this.handleMsgInput}
-                           value={this.state.msg}/>
-                <button className={"button_stuff"}
-                        onClick={() => (
-                            this.setState({
-                                id:"",
-                                name : "",
-                                msg : "",
-                                like: 0,
-                                time: ""
-                            }),
-                            (this.props.addMessage({
-                                id: nextId(),
-                                name: this.state.name? this.state.name:"Guest",
-                                msg: this.state.msg? this.state.msg:"The guest doesn't say anything",
-                                like: 0,
-                                time: new Date().toLocaleString()}))
-                        )
-                        }>ADD</button>
+                <div>
+                    <textarea  id={"msger_name"}
+                               placeholder={"Enter your name"}
+                               required={"required"}
+                               onChange = {this.handleNameInput}
+                               value={this.state.name} />
+                </div>
+                <div>
+                    <textarea  id={"msger_content"}
+                               placeholder={"Enter your message"}
+                               required={"required"}
+                               onChange = {this.handleMsgInput}
+                               value={this.state.msg}/>
+                </div>
+                <div>
+                    <button className={"button_stuff"}
+                            onClick={() => (
+                                this.setState({
+                                    id:"",
+                                    name : "",
+                                    msg : "",
+                                    like: 0,
+                                    time: ""
+                                }),
+                                    (this.props.addMessage({
+                                        id: nextId(),
+                                        name: this.state.name? this.state.name:"Guest",
+                                        msg: this.state.msg? this.state.msg:"The guest doesn't say anything",
+                                        like: 0,
+                                        time: new Date().toLocaleString()}))
+                            )
+                            }>ADD</button>
+                </div>
+
             </div>
+
         );
     }
 }

@@ -9,18 +9,19 @@ class MessageDisplayCard extends Component {
         const messages = reversed.map(
             (eachMessage) =>
                 (
-                    <Message key={eachMessage.id}
-                          id={eachMessage.id}
-                          name={eachMessage.name}
-                          msg={eachMessage.msg}
-                          like={eachMessage.like}
-                          time={eachMessage.time} />));
+                    <div>
+                        <Message key={eachMessage.id}
+                                 id={eachMessage.id}
+                                 name={eachMessage.name}
+                                 msg={eachMessage.msg}
+                                 like={eachMessage.like}
+                                 time={eachMessage.time} />
+                    </div>
+                    ));
         return (
-            <div className={"msg_block"}>
+            <div className={"msg_block row_column"}>
                 <h1>HISTORY</h1>
-                <ul className={"msg-cards"}>
-                    {messages}
-                </ul>
+                {messages}
             </div>
         )
     }

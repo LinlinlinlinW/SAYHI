@@ -9,13 +9,13 @@ import "./Popup_window.css"
 class Message extends Component{
     constructor(props){
         super(props)
-        this.state = {
-            name: "Guest",
-            id: -1,
-            msg: "The guest doesn't say anything",
-            like: 0,
-            time: new Date().toLocaleString()
-        }
+        // this.state = {
+        //     id: -1,
+        //     name: "Guest",
+        //     msg: "The guest doesn't say anything",
+        //     like: 0,
+        //     time: new Date().toLocaleString()
+        // }
         this.handleClickDelete = this.handleClickDelete.bind(this);
         this.handleClickLike = this.handleClickLike.bind(this);
     }
@@ -74,7 +74,6 @@ class Message extends Component{
                     <button className={"button_stuff"} onClick={this.handleClickDelete}>
                         <AiFillDelete className={"button_icon"} />
                     </button>
-
                     {this.modal}
                 </div>
             </div>
