@@ -37,10 +37,12 @@ export default function myReducer (state = [
             let newRes = state.map((ele) => {
                 if(ele.id === action.payload) {
                     const likeNum = ele.like + 1;
+
                     return {...ele, like: likeNum}
                 } else
                     return ele
             })
+            console.log(">> in reducer, sort : ", newRes)
             return newRes;
         }
 

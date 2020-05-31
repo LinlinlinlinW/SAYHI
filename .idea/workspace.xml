@@ -4,7 +4,7 @@
     <list default="true" id="0d51c7f2-131a-40af-859e-e9c5ff20c133" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MessageDisplayCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MessageDisplayCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +33,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JavaScript" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projects/Sayhi/SAYHI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -73,7 +73,8 @@
       <workItem from="1590447836370" duration="12463000" />
       <workItem from="1590612792037" duration="77305000" />
       <workItem from="1590818639014" duration="8330000" />
-      <workItem from="1590870572712" duration="13195000" />
+      <workItem from="1590870572712" duration="13376000" />
+      <workItem from="1590949826242" duration="1715000" />
     </task>
     <servers />
   </component>
