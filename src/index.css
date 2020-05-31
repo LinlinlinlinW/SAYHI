@@ -23,7 +23,7 @@
   display: inline-block;
   text-align: center;
   margin: 30px;
-  padding: 20px;
+  padding: 30px 150px 30px 150px;
   width: 50%;
   background-color: transparent;
   box-shadow: 3px 3px 3px 3px gray;
@@ -97,6 +97,12 @@
   text-align: center;
   z-index: 5;
   background-color: #2c2c2c;
+}
+
+#message_cards{
+  display: inline-grid;
+  grid-gap: 10px;
+  text-align: center;
 }
 
 body{
