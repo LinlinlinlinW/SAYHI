@@ -6,7 +6,9 @@ import {connect} from 'react-redux'
 class MessageDisplayCard extends Component {
     render() {
         let reversed = this.props.messageList.reverse();
-        const messages = reversed.map(
+        let sorted = this.props.messageList.sort((a, b) => a.key - b.key);
+        console.log("sorted array is ",sorted);
+        const messages = sorted.map(
             (eachMessage) =>
                 (
                     <Message key={eachMessage.id}
