@@ -4,6 +4,7 @@ import { AiFillLike, AiFillEye, AiFillDelete } from 'react-icons/ai'
 import { likeMessage, deleteMessage } from "../actions/actions"
 import { connect } from 'react-redux';
 import Popup from "reactjs-popup";
+import "./Popup_window.css"
 
 class Message extends Component{
     constructor(props){
@@ -15,7 +16,6 @@ class Message extends Component{
             like: 0,
             time: new Date().toLocaleString()
         }
-        console.log(">> local time is ", this.state.time)
         this.handleClickDelete = this.handleClickDelete.bind(this);
         this.handleClickLike = this.handleClickLike.bind(this);
     }
@@ -31,9 +31,39 @@ class Message extends Component{
     }
 
 
+    modal = (
+        <Popup modal
+               trigger ={<button className={"button_stuff"}><AiFillEye className={"button_icon"} /></button>} >
+            {close => (
+                <div className={"modal"}>
+                    <div className={"header"}> Message id: {this.props.id} </div>
+
+                    <div className={"content"}>
+                        <h3> Message Created Time </h3>
+                        {this.props.time} <br />
+                        <h3> Name </h3>
+                        {this.props.name}<br />
+                        <h3> Message Content </h3>
+                        {this.props.msg} <br />
+                        <h3> Number of Likes </h3>
+                        {this.props.like} <br />
+                    </div>
+
+                    <div className={"actions"}>
+                        <button
+                            className={"button_stuff"}
+                            onClick={() => {close();}}>CLOSE</button>
+                    </div>
+                </div>
+            )}
+        </Popup>
+    );
+
+
+
     render(){
         return(
-            <div className={"card-container"} onClick={this.handleViewDetail}>
+            <div className={"card-container"}>
                 <div className={"card-container-first-row"}>{this.props.name}</div>
                 <div className={"card-container-second-row"}>{this.props.msg}</div>
                 <div className={"card-container-third-row"}>
@@ -44,15 +74,8 @@ class Message extends Component{
                     <button className={"button_stuff"} onClick={this.handleClickDelete}>
                         <AiFillDelete className={"button_icon"} />
                     </button>
-                    <Popup className={"pop_up_window"}
-                           trigger={<button className={"button_stuff"}><AiFillEye className={"button_icon"} /></button>}
-                           position="right center">
-                        <div>Name: {this.props.name}</div>
-                        <div>Message: {this.props.msg}</div>
-                        <div>Like: {this.props.like}</div>
-                        <div>Time: {this.props.time}</div>
-                    </Popup>
 
+                    {this.modal}
                 </div>
             </div>
         )

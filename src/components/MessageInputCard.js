@@ -9,23 +9,25 @@ class MessageInputCard extends Component {
     constructor() {
         super()
         this.state = {
-            name : "Guest",
-            message : "The guest doesn't say anything"
+            id:"",
+            name : "",
+            msg : "",
+            like: 0,
+            time: ""
         }
     }
 
     handleNameInput = nname => {
            this.setState({
-            name : nname.target.value
+               name: nname.target.value
         })
     }
 
     handleMsgInput = mmsg => {
         this.setState({
-            message : mmsg.target.value
+            msg : mmsg.target.value
         })
     }
-
 
     render() {
         return (
@@ -35,20 +37,29 @@ class MessageInputCard extends Component {
                            placeholder={"Enter your name"}
                            required={"required"}
                            onChange = {this.handleNameInput}
-                           value={this.props.name} />
+                           value={this.state.name} />
                 <textarea  id={"msger_content"}
                            placeholder={"Enter your message"}
                            required={"required"}
                            onChange = {this.handleMsgInput}
-                           value={this.props.msg}/>
+                           value={this.state.msg}/>
                 <button className={"button_stuff"}
-                        onClick={() =>
-                            this.props.addMessage({
-                            id: nextId(),
-                            name: this.state.name,
-                            msg: this.state.message,
-                            like: 0,
-                            time: new Date().toLocaleString()})}>ADD</button>
+                        onClick={() => (
+                            this.setState({
+                                id:"",
+                                name : "",
+                                msg : "",
+                                like: 0,
+                                time: ""
+                            }),
+                            (this.props.addMessage({
+                                id: nextId(),
+                                name: this.state.name? this.state.name:"Guest",
+                                msg: this.state.msg? this.state.msg:"The guest doesn't say anything",
+                                like: 0,
+                                time: new Date().toLocaleString()}))
+                        )
+                        }>ADD</button>
             </div>
         );
     }

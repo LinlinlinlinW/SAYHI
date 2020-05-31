@@ -3,17 +3,18 @@ import "../index.css"
 import Message from "./Message";
 import {connect} from 'react-redux'
 
-
 class MessageDisplayCard extends Component {
     render() {
-        const messages = this.props.messageList.map(
+        let reversed = this.props.messageList.reverse();
+        const messages = reversed.map(
             (eachMessage) =>
-                (<Message key={eachMessage.id}
+                (
+                    <Message key={eachMessage.id}
                           id={eachMessage.id}
                           name={eachMessage.name}
                           msg={eachMessage.msg}
                           like={eachMessage.like}
-                          haveRead={eachMessage.time} />));
+                          time={eachMessage.time} />));
         return (
             <div className={"msg_block"}>
                 <h1>HISTORY</h1>
@@ -24,7 +25,6 @@ class MessageDisplayCard extends Component {
         )
     }
 }
-
 
 const mapStateToProps = state => {
     return {
