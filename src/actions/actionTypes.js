@@ -3,5 +3,4 @@
 export const MSG_ADD = "addNewMessage";
 export const MSG_DEL = "deleteMessage";
 export const MSG_LIKE = "likeMessage";
-
-// export const MSG_RESOLVED = "readMessage";
+export const MSG_RESOLVED = "readMessage";

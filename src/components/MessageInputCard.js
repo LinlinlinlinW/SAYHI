@@ -13,7 +13,8 @@ class MessageInputCard extends Component {
             name : "",
             msg : "",
             like: 0,
-            time: ""
+            time: "",
+            haveRead:false
         }
     }
 
@@ -55,14 +56,17 @@ class MessageInputCard extends Component {
                                     name : "",
                                     msg : "",
                                     like: 0,
-                                    time: ""
+                                    time: "",
+                                    haveRead: false
                                 }),
                                     (this.props.addMessage({
                                         id: nextId(),
                                         name: this.state.name? this.state.name:"Guest",
                                         msg: this.state.msg? this.state.msg:"The guest doesn't say anything",
                                         like: 0,
-                                        time: new Date().toLocaleString()}))
+                                        time: new Date().toLocaleString(),
+                                        haveRead: false
+                                    }))
                             )
                             }>ADD</button>
                 </div>

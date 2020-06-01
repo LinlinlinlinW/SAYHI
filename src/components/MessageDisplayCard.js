@@ -16,7 +16,8 @@ class MessageDisplayCard extends Component {
                              name={eachMessage.name}
                              msg={eachMessage.msg}
                              like={eachMessage.like}
-                             time={eachMessage.time} />
+                             time={eachMessage.time}
+                             haveRead={eachMessage.haveRead}/>
                     ));
         return (
             <div className={"msg_block row_column"}>

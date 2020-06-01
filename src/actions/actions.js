@@ -25,13 +25,13 @@ export const likeMessage = id => {
     };
 };
 
-// export const readMessage = id => {
-//     console.log(">> Message being read is ", id);
-//     return {
-//         type : actions.MSG_RESOLVED,
-//         payload: id
-//     };
-// }
+export const readMessage = id => {
+    console.log(">> Message being read is ", id);
+    return {
+        type : actions.MSG_RESOLVED,
+        payload: id
+    };
+}
 
 
 
