@@ -24,15 +24,21 @@ export default function myReducer (state = [
 
     switch (action.type) {
 
-        case actions.MSG_ADD:
+        case actions.MSG_ADD:{
             return ([
                 ...state,
                 action.payload
             ]);
-
+        }
+            
         case actions.MSG_DEL :{
             let rr = state.filter((ele) => ele.id !== action.payload)
             return rr;
+        }
+
+        case actions.MSG_CLEAR :{
+            console.log(">> Reducers: clear message")
+            return [];
         }
 
         case actions.MSG_LIKE:{

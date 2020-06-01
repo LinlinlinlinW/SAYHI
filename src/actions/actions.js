@@ -17,6 +17,13 @@ export const deleteMessage = id => {
     }
 }
 
+export const clearMessage = () => {
+    console.log(">> Messges being cleared");
+    return {
+        type : actions.MSG_CLEAR
+    }
+}
+
 export const likeMessage = id => {
     console.log(">> Message being liked is ", id);
     return {

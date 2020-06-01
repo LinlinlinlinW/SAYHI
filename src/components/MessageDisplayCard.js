@@ -2,31 +2,69 @@ import React, {Component} from 'react';
 import "../index.css"
 import Message from "./Message";
 import {connect} from 'react-redux'
+import {clearMessage} from "../actions/actions"
 
 class MessageDisplayCard extends Component {
-    render() {
+    constructor() {
+        super();
+
+        this.state={
+            messages : []                    
+        }
+
+        this.handleDisplay = this.handleDisplay.bind(this)
+        this.handleClickClear = this.handleClickClear.bind(this)
+    }
+
+
+    handleDisplay = () => {
         let sorted = this.props.messageList.sort((a, b) => (
             b.id.replace(/^id+/i, '') - a.id.replace(/^id+/i, '')
         ));
-        const messages = sorted.map(
-            (eachMessage) =>
-                (
-                    <Message key={eachMessage.id}
-                             id={eachMessage.id}
-                             name={eachMessage.name}
-                             msg={eachMessage.msg}
-                             like={eachMessage.like}
-                             time={eachMessage.time}
-                             haveRead={eachMessage.haveRead}/>
-                    ));
-        return (
+        
+        if (sorted) {
+            let messages = sorted.map(
+                (eachMessage) =>
+                    (
+                        <Message key={eachMessage.id}
+                                 id={eachMessage.id}
+                                 name={eachMessage.name}
+                                 msg={eachMessage.msg}
+                                 like={eachMessage.like}
+                                 time={eachMessage.time}
+                                 haveRead={eachMessage.haveRead}/>
+                     )
+            );
+            return messages;
+        } else {
+            return sorted
+        }
+    }
+
+
+    handleClickClear = (event) => {
+        event.preventDefault();
+        this.props.clickClear();
+    }
+
+    render() {
+                return (
             <div className={"msg_block row_column"}>
                 <h1>HISTORY</h1>
-                <div id={"message_cards"}>{messages}</div>
+                <div>
+                    <button className={"button_stuff"} style={{display: "inline-block"}} onClick={this.handleClickClear}>
+                        CLEAR ALL MESSAGES
+                    </button>
+                </div>
+                
+                <div id={"message_cards"}>
+                    {this.handleDisplay()}
+                </div>
             </div>
         )
     }
 }
+
 
 const mapStateToProps = state => {
     return {
@@ -34,5 +72,9 @@ const mapStateToProps = state => {
     }
 }
 
+const mapActionsToProps =(dispatch)=> ({
+    clickClear: () => dispatch(clearMessage())
+})
 
-export default connect(mapStateToProps, null)(MessageDisplayCard);
+
+export default connect(mapStateToProps, mapActionsToProps)(MessageDisplayCard);
