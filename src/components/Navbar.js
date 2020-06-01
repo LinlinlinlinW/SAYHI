@@ -7,6 +7,7 @@ class Navbar extends Component {
             <div id={"nav-bar"}>
                 <nav id="nav-menu" role="navigation">
                     <a className="nav-buttons nav-link" href="../../public/index.html">HOME</a>
+                    {/* <a className="nav-buttons nav-link" href="../../public/aboutme.html">ABOUT</a> */}
                 </nav>
             </div>
         )
