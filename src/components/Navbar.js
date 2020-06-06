@@ -7,12 +7,12 @@ class Navbar extends Component {
         return(
             <div id={"nav-bar"}>
                 <nav id="nav-menu" role="navigation">
-                    <Link to={"/"}>
-                        <li>HOME</li>
-
+                    <Link to={"/"} className={"nav-buttons nav-link"}>
+                        <div style={{background:"transparent"}}>HOME</div>
                     </Link>
-                    <Link to={"/about"}>
-                        <li>ABOUT</li>
+
+                    <Link to={"/about"} className={"nav-buttons nav-link"} >
+                        <div style={{background:"transparent"}}>ABOUT</div>
                     </Link>
                 </nav>
             </div>

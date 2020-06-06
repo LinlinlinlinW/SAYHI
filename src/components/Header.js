@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import "../index.css";
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.handleScroll = this.handleScroll.bind(this);
+  constructor(props) {
+    super(props);
+    // this.handleScroll = this.handleScroll.bind(this);
     this.myRef = React.createRef();
   }
   //
@@ -47,24 +47,24 @@ class Header extends Component {
   //     window.removeEventListener('scroll', this.handleScroll);
   // }
 
-  handleScroll = (event) => {
-    event.preventDefault();
-    // const tar = document.querySelectorAll('.scroll');
-
-    const tar = this.myRef.current;
-    // console.log(">> tar is ", tar);
-    let len = tar.length;
-    // console.log(">> len is ", len);
-    for (let i = 0; i < len; i++) {
-      let pos = window.pageYOffset * tar[i].dataset.rate;
-      if (tar[i].dataset.direction === "vertical") {
-        this.setState();
-        tar[i].style.transform = "translate3d(0px," + pos + "px, 0px)";
-      } else {
-        tar[i].style.transform = "translate3d(" + pos + "px, 0px, 0px)";
-      }
-    }
-  };
+  // handleScroll = (event) => {
+  //   event.preventDefault();
+  //   // const tar = document.querySelectorAll('.scroll');
+  //
+  //   const tar = this.myRef.current;
+  //   // console.log(">> tar is ", tar);
+  //   let len = tar.length;
+  //   // console.log(">> len is ", len);
+  //   for (let i = 0; i < len; i++) {
+  //     let pos = window.pageYOffset * tar[i].dataset.rate;
+  //     if (tar[i].dataset.direction === "vertical") {
+  //       this.setState();
+  //       tar[i].style.transform = "translate3d(0px," + pos + "px, 0px)";
+  //     } else {
+  //       tar[i].style.transform = "translate3d(" + pos + "px, 0px, 0px)";
+  //     }
+  //   }
+  // };
 
   render() {
     return (
