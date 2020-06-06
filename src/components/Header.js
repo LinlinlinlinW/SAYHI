@@ -71,7 +71,8 @@ class Header extends Component {
       <div id={"container-div"}>
         <ul
           className={"title-ul"}
-          onScroll={this.handleScroll}
+          // TODO
+          // onScroll={this.handleScroll}
           ref={this.myRef}
         >
           <li

@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
 import "../index.css"
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
     render(){
         return(
             <div id={"nav-bar"}>
                 <nav id="nav-menu" role="navigation">
-                    <a className="nav-buttons nav-link" href="../../public/index.html">HOME</a>
-                    {/* <a className="nav-buttons nav-link" href="../../public/aboutme.html">ABOUT</a> */}
+                    <Link to={"/"}>
+                        <li>HOME</li>
+
+                    </Link>
+                    <Link to={"/about"}>
+                        <li>ABOUT</li>
+                    </Link>
                 </nav>
             </div>
         )
@@ -15,4 +21,3 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-/*<a className="nav-buttons nav-link" href="contact.html">ABOUT</a>*/

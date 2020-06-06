@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import "../index.css"
+import "../../index.css"
 import { connect } from 'react-redux';
-import { addMessage } from "../actions/actions";
+import { addMessage } from "../../actions/actions";
 import nextId from "react-id-generator";
 
 

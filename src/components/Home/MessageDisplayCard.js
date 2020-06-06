@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
-import "../index.css"
+import "../../index.css"
 import Message from "./Message";
 import {connect} from 'react-redux'
-import {clearMessage} from "../actions/actions"
+import {clearMessage} from "../../actions/actions"
 
 class MessageDisplayCard extends Component {
     constructor() {
         super();
 
         this.state={
-            messages : []                    
+            messages : []
         }
 
         this.handleDisplay = this.handleDisplay.bind(this)
@@ -21,7 +21,7 @@ class MessageDisplayCard extends Component {
         let sorted = this.props.messageList.sort((a, b) => (
             b.id.replace(/^id+/i, '') - a.id.replace(/^id+/i, '')
         ));
-        
+
         if (sorted) {
             let messages = sorted.map(
                 (eachMessage) =>
@@ -56,7 +56,7 @@ class MessageDisplayCard extends Component {
                         CLEAR ALL MESSAGES
                     </button>
                 </div>
-                
+
                 <div id={"message_cards"}>
                     {this.handleDisplay()}
                 </div>

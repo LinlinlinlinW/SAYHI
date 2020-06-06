@@ -1,9 +1,10 @@
 import React from 'react';
 import "../index.css"
-import MessageInputCard from "./MessageInputCard";
-import MessageDisplayCard from "./MessageDisplayCard";
+import MessageInputCard from "./Home/MessageInputCard";
+import MessageDisplayCard from "./Home/MessageDisplayCard";
 import Navbar from "./Navbar";
 import Header from "./Header";
+
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 function App(){
@@ -11,21 +12,26 @@ function App(){
         <Router>
             <div className="App">
                 <Navbar />
-                <Header />
                 <Switch>
-                    <Route path={"../public/index"} exact component={Home} />
-                    <Route path={"../public/aboutme"} exact component={Header} />
+                    <Route path={"/"} exact component={Home}/>
+                    <Route path={"/about"} exact component={About}/>
                 </Switch>
             </div>
         </Router>
-
     );
 }
 
 const Home = () => (
     <div>
+        <Header />
         <MessageInputCard />
         <MessageDisplayCard />
+    </div>
+)
+
+const About = () => (
+    <div>
+        <h1>ABOUT ME</h1>
     </div>
 )
 
