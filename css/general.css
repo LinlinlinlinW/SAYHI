@@ -97,6 +97,7 @@
     font-weight: bold;
 }
 *{
+    margin:0;
     background-color: #b7bad6;
     font-family: Titillium Web;
     box-sizing: border-box;
