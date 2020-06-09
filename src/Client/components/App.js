@@ -4,7 +4,6 @@ import MessageInputCard from "./Home/MessageInputCard";
 import MessageDisplayCard from "./Home/MessageDisplayCard";
 import Navbar from "./Navbar";
 import Header from "./Header";
-import connection from "../connection/connection";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
