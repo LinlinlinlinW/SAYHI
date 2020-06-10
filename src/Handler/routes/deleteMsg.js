@@ -4,7 +4,6 @@ const router = express.Router();
 const Message = require("../models/Message");
 
 router.delete("/", (req, res) => {
-  console.log(">> deleted id:", req.body.id);
   Message.findOne({ id: req.body.id })
     .then((result) => {
       Message.findOneAndDelete({ id: result.id })
