@@ -4,13 +4,19 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 
 // import routes
-const postRoute = require("./routes/posts");
+const postRoute = require("./routes/addNewMsg");
+const deleteRoute = require("./routes/deleteMsg");
+const putRoute_read = require("./routes/readMsg");
+const putRoute_like = require("./routes/likeMsg");
 
 // execute it
 const handler = express();
 handler.use(express.urlencoded({ extended: true }));
 handler.use(express.json());
 handler.use("/posts", postRoute);
+handler.use("/deletes", deleteRoute);
+handler.use("/puts_read", putRoute_read);
+handler.use("/puts_like", putRoute_like);
 
 // connect to mongodb through mongoose
 mongoose.connect(
@@ -18,14 +24,13 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   },
   console.log(">> connected to DB!")
 );
 
-console.log(">> line 22");
 // How do we start to listening to the server
 handler.listen(9000);
-console.log(">> line 25");
 
 // CONNECT TO DB DIRECTLY
 // let mongodb = require("mongodb");
