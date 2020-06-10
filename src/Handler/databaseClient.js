@@ -1,34 +1,51 @@
-let mongodb = require('mongodb');
-let MongoClient = mongodb.MongoClient;
+// import the package
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv/config");
 
-let url = 'mongodb+srv://m001-student:m001-mongodb-basics@sandbox-qheyf.mongodb.net/messages?retryWrites=true&w=majority';
+// import routes
+const postRoute = require("./routes/posts");
 
-// MongoClient.connect(url, (err, client) => {
-//     if (err)
-//         throw err;
-//
-//     let db = client.db('messages');
-//
-//     db.collection('message').find().toArray(function (err, result) {
-//         if (err)
-//             throw err
-//         console.log(result)
-//     })
-// })
+// execute it
+const handler = express();
+handler.use(express.urlencoded({ extended: true }));
+handler.use(express.json());
+handler.use("/posts", postRoute);
 
-MongoClient.connect(url,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    },function(err, db) {
-    if (err)
-        throw err;
-    let dbo = db.db("messages");
-    dbo.collection("message").findOne({}, function(err, result) {
-        if (err) throw err;
-        console.log("herererere");
-        console.log(result);
-        console.log("》》》》herererere");
-        db.close();
-    });
-});
+// connect to mongodb through mongoose
+mongoose.connect(
+  "mongodb+srv://m001-student:m001-mongodb-basics@sandbox-qheyf.mongodb.net/messages?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  console.log(">> connected to DB!")
+);
+
+console.log(">> line 22");
+// How do we start to listening to the server
+handler.listen(9000);
+console.log(">> line 25");
+
+// CONNECT TO DB DIRECTLY
+// let mongodb = require("mongodb");
+// let MongoClient = mongodb.MongoClient;
+
+// MongoClient.connect(
+//   process.env.DB_CONNECTION,
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   },
+//   function (err, db) {
+//     if (err) throw err;
+//     let dbo = db.db("messages");
+//     dbo.collection("message").findOne({}, function (err, result) {
+//       if (err) throw err;
+//       console.log("herererere");
+//       console.log(result);
+//       console.log("》》》》herererere");
+//       db.close();
+//     });
+//   }
+// );

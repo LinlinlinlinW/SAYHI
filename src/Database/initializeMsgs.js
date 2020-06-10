@@ -7,6 +7,7 @@ db.message.insertMany([
     msg: "Message shown here!",
     like: 0,
     time: "6/7/2020, 12:52:15 PM",
+    //2020-06-07T23:52:01.463+00:00
     haveRead: false,
   },
   {
