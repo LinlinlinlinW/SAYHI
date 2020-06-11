@@ -9,6 +9,7 @@ const messageSchema = mongoose.Schema(
     like: { type: Number, default: 0 },
     time: { type: String, default: new Date().toLocaleString() },
     haveRead: { type: Boolean, default: false },
+    dateNow: { type: Number, required: true },
   },
   { collection: "message" }
 );

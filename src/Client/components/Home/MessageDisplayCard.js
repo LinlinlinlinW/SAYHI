@@ -19,7 +19,7 @@ class MessageDisplayCard extends Component {
   handleDisplay = () => {
     let sorted = this.props.messageList.sort(
       // (a, b) => b.id.replace(/^id+/i, "") - a.id.replace(/^id+/i, "")
-      (a, b) => b.time - a.time
+      (a, b) => b.dateNow - a.dateNow
     );
 
     if (sorted) {
@@ -32,6 +32,7 @@ class MessageDisplayCard extends Component {
           like={eachMessage.like}
           time={eachMessage.time}
           haveRead={eachMessage.haveRead}
+          dateNow={eachMessage.dateNow}
         />
       ));
       return messages;

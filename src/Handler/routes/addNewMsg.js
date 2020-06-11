@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
           like: req.body.like,
           time: req.body.time,
           haveRead: req.body.haveRead,
+          dateNow: req.body.dateNow,
         });
 
         newMsg

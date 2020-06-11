@@ -20,6 +20,7 @@ export const addMessage = (element) => {
         like: element.like,
         time: element.time,
         haveRead: element.haveRead,
+        dateNow: element.dateNow,
       })
       .then((response) => {
         // console.log("resolve promise:", response.data);
@@ -32,7 +33,7 @@ export const addMessage = (element) => {
   };
 };
 
-export const addMessageAsync = (element) => {
+const addMessageAsync = (element) => {
   return {
     type: actions.MSG_ADD,
     payload: element,
@@ -49,6 +50,21 @@ export const deleteMessage = (id) => {
 
 export const clearMessage = () => {
   console.log(">> Messges being cleared");
+  return function (dispatch) {
+    axios
+      .delete("http://127.0.0.1:9000/deletes_all")
+      .then((res) => {
+        console.log(">> successfully clear msg in db", res);
+        dispatch(clearMessageAsync());
+      })
+      .catch((rej) => {
+        console.log(">> fail to clear msg in db", rej);
+      });
+    //handler.use("/deletes_all", deleteAllRoute);
+  };
+};
+
+const clearMessageAsync = () => {
   return {
     type: actions.MSG_CLEAR,
   };

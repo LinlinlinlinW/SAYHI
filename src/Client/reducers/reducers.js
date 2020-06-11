@@ -12,6 +12,7 @@ export default function myReducer(
       like: 0,
       time: new Date().toLocaleString(),
       haveRead: false,
+      dateNow: 1591912492096,
     },
     {
       id: "id2",
@@ -20,6 +21,7 @@ export default function myReducer(
       like: 3,
       time: new Date().toLocaleString(),
       haveRead: true,
+      dateNow: 1591912492196,
     },
   ],
   action

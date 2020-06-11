@@ -17,7 +17,7 @@ const handler = express();
 handler.use(cors());
 handler.use(express.urlencoded({ extended: true }));
 handler.use(express.json());
-handler.use("/", putPrefilledMsg);
+handler.use("/puts_prefill", putPrefilledMsg);
 handler.use("/posts", postRoute);
 handler.use("/deletes", deleteRoute);
 handler.use("/puts_read", putRoute_read);

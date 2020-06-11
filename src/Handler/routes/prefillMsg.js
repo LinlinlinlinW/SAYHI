@@ -19,6 +19,7 @@ router.put("/", (req, res) => {
           like: 0,
           time: new Date().toLocaleString(),
           haveRead: false,
+          dateNow: 1591912492096,
         });
         let newMsg2 = new Message({
           _id: new mongoose.Types.ObjectId(),
@@ -28,6 +29,7 @@ router.put("/", (req, res) => {
           like: 3,
           time: "6/9/2020, 12:32:15 AM",
           haveRead: true,
+          dateNow: 1591912492196,
         });
 
         newMsg1
@@ -58,7 +60,7 @@ router.put("/", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
-  res.send("we are on post home");
-});
+// router.get("/", (req, res) => {
+//   res.send("we are on post home");
+// });
 module.exports = router;

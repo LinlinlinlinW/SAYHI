@@ -15,6 +15,7 @@ class MessageInputCard extends Component {
       like: 0,
       time: "",
       haveRead: false,
+      dateNow: Date.now(),
     };
   }
 
@@ -63,6 +64,7 @@ class MessageInputCard extends Component {
                 like: 0,
                 time: "",
                 haveRead: false,
+                dateNow: 0,
               }),
               this.props.addMessage({
                 id: uuidv4(),
@@ -73,6 +75,7 @@ class MessageInputCard extends Component {
                 like: 0,
                 time: new Date().toLocaleString(),
                 haveRead: false,
+                dateNow: Date.now(),
               })
             )}
           >

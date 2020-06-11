@@ -6,4 +6,5 @@ db.message.insertOne({
   like: 0,
   time: "6/9/2020, 1:18:15 AM",
   haveRead: false,
+  dateNow: Date.now(),
 });
