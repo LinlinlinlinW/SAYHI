@@ -21,6 +21,8 @@ function App() {
 }
 
 const Home = () => (
+  // call
+
   <div>
     <Header />
     <MessageInputCard />

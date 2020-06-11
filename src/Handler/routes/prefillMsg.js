@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 const Message = require("../models/Message");
-const nextId = require("react-id-generator");
 
 router.put("/", (req, res) => {
   Message.find({})
@@ -10,7 +9,7 @@ router.put("/", (req, res) => {
       // obj is an array
       if (obj.length !== 0) {
         console.log("obj:", obj);
-        res.status(409).send({ prefilledMsg: obj });
+        res.send({ prefilledMsg: obj });
       } else {
         let newMsg1 = new Message({
           _id: new mongoose.Types.ObjectId(),
@@ -57,5 +56,9 @@ router.put("/", (req, res) => {
       console.log(err);
       res.status(409).send({ "somethingWrong:": err });
     });
+});
+
+router.get("/", (req, res) => {
+  res.send("we are on post home");
 });
 module.exports = router;

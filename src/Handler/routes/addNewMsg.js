@@ -33,7 +33,7 @@ router.post("/", (req, res) => {
       }
     })
     .catch((err) => {
-      res.status(409).send({ "something wrong:": err });
+      res.status(409).send({ All: Message.find(), "something wrong:": err });
     });
 });
 module.exports = router;

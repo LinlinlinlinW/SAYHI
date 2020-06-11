@@ -1,6 +1,7 @@
 // import the package
 const express = require("express");
 const mongoose = require("mongoose");
+var cors = require("cors");
 require("dotenv/config");
 
 // import routes
@@ -13,6 +14,7 @@ const deleteAllRoute = require("./routes/deleteAllMsg");
 
 // execute it
 const handler = express();
+handler.use(cors());
 handler.use(express.urlencoded({ extended: true }));
 handler.use(express.json());
 handler.use("/", putPrefilledMsg);
