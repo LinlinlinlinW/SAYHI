@@ -5,7 +5,7 @@ import axios from "axios";
 
 // FETCH MSG IN DB
 export const fetchMessage = () => {
-  console.log(">> Message being fetched.");
+  console.log(">> Action: Message being fetched.");
   return function (dispatch) {
     axios
       .put("http://127.0.0.1:9000/puts_prefill")
@@ -14,11 +14,10 @@ export const fetchMessage = () => {
         dispatch(fetchMessageAsync(res.data));
       })
       .catch((rej) => {
-        console.log(">> something wrong in fetching the prefilled msg");
+        console.log(">> something wrong in fetching the prefilled msg:", rej);
       });
   };
 };
-
 const fetchMessageAsync = (messages) => {
   // console.log(">> in fetchMessageAsync,", messages);
   return {
@@ -29,14 +28,13 @@ const fetchMessageAsync = (messages) => {
 
 // ADD MSG
 export const addMessage = (element) => {
-  console.log(">> Message being added is ", element);
+  console.log(">> Action: Message being added is ", element);
   //  WITHOUT CONNECTING TO DATABASE
   //   return function (dispatch) {
   //     dispatch(addMessageAsync(element));
   //   };
 
   return function (dispatch) {
-    console.log(">> element.id", element.id);
     axios
       .post("http://127.0.0.1:9000/posts", {
         id: element.id,
@@ -57,7 +55,6 @@ export const addMessage = (element) => {
       });
   };
 };
-
 const addMessageAsync = (element) => {
   return {
     type: actions.MSG_ADD,
@@ -65,9 +62,21 @@ const addMessageAsync = (element) => {
   };
 };
 
-// TODO: DELETE MSG
-export const deleteMessage = (id) => {
-  console.log(">> Message being deleted is ", id);
+// DELETE MSG
+export const deleteMessage = (idToDel) => {
+  return function (dispatch) {
+    console.log(">> Action: Message being deleted is ", idToDel);
+    axios
+      .delete("http://127.0.0.1:9000/deletes", { data: { id: idToDel } })
+      .then((res) => {
+        dispatch(deleteMessageAsync(res.data.deleteID));
+      })
+      .catch((rej) => {
+        console.log(">> ERROR in Action: error in delete message:", rej);
+      });
+  };
+};
+const deleteMessageAsync = (id) => {
   return {
     type: actions.MSG_DEL,
     payload: id,
@@ -76,7 +85,7 @@ export const deleteMessage = (id) => {
 
 // CLEAR MSG
 export const clearMessage = () => {
-  console.log(">> Messges being cleared");
+  console.log(">> Action: Messges being cleared");
   return function (dispatch) {
     axios
       .delete("http://127.0.0.1:9000/deletes_all")
@@ -90,31 +99,55 @@ export const clearMessage = () => {
     //handler.use("/deletes_all", deleteAllRoute);
   };
 };
-
 const clearMessageAsync = () => {
   return {
     type: actions.MSG_CLEAR,
   };
 };
 
-// TODO: LIKE MSG
-export const likeMessage = (id) => {
-  console.log(">> Message being liked is ", id);
+// LIKE MSG
+export const likeMessage = (idToLike) => {
+  console.log(">> Action: Message being liked is ", idToLike);
+  return function (dispatch) {
+    axios
+      .put("http://127.0.0.1:9000/puts_like", { id: idToLike })
+      .then((res) => {
+        console.log(">> successfully like msg in db", res.data.id);
+        dispatch(likeMessageAsync(res.data.id));
+      })
+      .catch((rej) => {
+        console.log(">> fail to LIKE msg in db", rej);
+      });
+  };
+};
+const likeMessageAsync = (id) => {
   return {
     type: actions.MSG_LIKE,
     payload: id,
   };
 };
 
-// TODO: FETCH MSG
-export const readMessage = (id) => {
-  console.log(">> Message being read is ", id);
+// READ MSG
+export const readMessage = (idToRead) => {
+  console.log(">> Action: Message being read is ", idToRead);
+  return function (dispatch) {
+    axios
+      .put("http://127.0.0.1:9000/puts_read", { id: idToRead })
+      .then((res) => {
+        console.log(">> successfully like msg in db", res.data.id);
+        dispatch(readMessageAsync(res.data.id));
+      })
+      .catch((rej) => {
+        console.log(">> fail to read msg in db", rej);
+      });
+  };
+};
+const readMessageAsync = (id) => {
   return {
     type: actions.MSG_RESOLVED,
     payload: id,
   };
 };
-
 // export const loading = () => {
 //   return {
 //     type: actions.MSG_LOADING,
