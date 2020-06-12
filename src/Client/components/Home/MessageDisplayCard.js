@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../index.css";
 import Message from "./Message";
 import { connect } from "react-redux";
-import { clearMessage } from "../../actions/actions";
+import { clearMessage, fetchMessage } from "../../actions/actions";
 
 class MessageDisplayCard extends Component {
   constructor() {
@@ -47,7 +47,10 @@ class MessageDisplayCard extends Component {
   };
 
   componentDidMount = () => {
-    // this.props.fetchPrefilledMsg()
+    console.log(
+      ">> In Message Display Card, fetch message in DB:",
+      this.props.fetchMessageInDB()
+    );
   };
 
   render() {
@@ -78,7 +81,7 @@ const mapStateToProps = (state) => {
 
 const mapActionsToProps = (dispatch) => ({
   clickClear: () => dispatch(clearMessage()),
-  // fetchPrefilledMsg: () => dispatch(fetchMessage())
+  fetchMessageInDB: () => dispatch(fetchMessage()),
 });
 
 export default connect(mapStateToProps, mapActionsToProps)(MessageDisplayCard);

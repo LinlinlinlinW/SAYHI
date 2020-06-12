@@ -9,7 +9,7 @@ router.put("/", (req, res) => {
       // obj is an array
       if (obj.length !== 0) {
         console.log("obj:", obj);
-        res.send({ prefilledMsg: obj });
+        res.status(200).send(obj);
       } else {
         let newMsg1 = new Message({
           _id: new mongoose.Types.ObjectId(),

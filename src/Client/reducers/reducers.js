@@ -3,30 +3,14 @@ import * as actions from "../actions/actionTypes";
 // TODO: step3: goto reducer and add specific actions
 
 // The initial state should be an empty array
-export default function myReducer(
-  state = [
-    {
-      id: "id1",
-      name: "John Doe",
-      msg: "Message shown here!",
-      like: 0,
-      time: new Date().toLocaleString(),
-      haveRead: false,
-      dateNow: 1591912492096,
-    },
-    {
-      id: "id2",
-      name: "Obaseki Nosa",
-      msg: "Message shown here!",
-      like: 3,
-      time: new Date().toLocaleString(),
-      haveRead: true,
-      dateNow: 1591912492196,
-    },
-  ],
-  action
-) {
+export default function myReducer(state = [], action) {
   switch (action.type) {
+    case actions.MSG_FETCH: {
+      console.log(">> Reducers: fetch message");
+      state = action.payload;
+      return [...state];
+    }
+
     case actions.MSG_ADD: {
       console.log(">> Reducers: add message");
       state.loading = false;
