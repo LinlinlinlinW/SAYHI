@@ -69,7 +69,7 @@ export const deleteMessage = (idToDel) => {
     axios
       .delete("http://127.0.0.1:9000/deletes", { data: { id: idToDel } })
       .then((res) => {
-        dispatch(deleteMessageAsync(res.data.deleteID));
+        dispatch(deleteMessageAsync(res.data));
       })
       .catch((rej) => {
         console.log(">> ERROR in Action: error in delete message:", rej);

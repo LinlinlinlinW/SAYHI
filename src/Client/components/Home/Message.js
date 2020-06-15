@@ -120,12 +120,12 @@ class Message extends Component {
               <AiFillLike className={"button_icon"} />
               {this.props.like}
             </button>
+            {this.modal}
             <button className={"button_stuff"} onClick={this.handleClickDelete}>
               <AiFillDelete className={"button_icon"} />
             </button>
           </div>
         </div>
-        {this.modal}
       </div>
     );
   }
