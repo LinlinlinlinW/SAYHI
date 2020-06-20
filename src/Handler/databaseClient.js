@@ -11,6 +11,7 @@ const deleteRoute = require("./routes/deleteMsg");
 const putRoute_read = require("./routes/readMsg");
 const putRoute_like = require("./routes/likeMsg");
 const deleteAllRoute = require("./routes/deleteAllMsg");
+const filterMsg = require("./routes/filterMsg");
 
 // execute it
 const handler = express();
@@ -23,6 +24,7 @@ handler.use("/deletes", deleteRoute);
 handler.use("/puts_read", putRoute_read);
 handler.use("/puts_like", putRoute_like);
 handler.use("/deletes_all", deleteAllRoute);
+handler.use("/filterMsg", filterMsg);
 
 // connect to mongodb through mongoose
 mongoose.connect(
@@ -37,26 +39,3 @@ mongoose.connect(
 
 // How do we start to listening to the server
 handler.listen(9000);
-
-// CONNECT TO DB DIRECTLY
-// let mongodb = require("mongodb");
-// let MongoClient = mongodb.MongoClient;
-
-// MongoClient.connect(
-//   process.env.DB_CONNECTION,
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   },
-//   function (err, db) {
-//     if (err) throw err;
-//     let dbo = db.db("messages");
-//     dbo.collection("message").findOne({}, function (err, result) {
-//       if (err) throw err;
-//       console.log("herererere");
-//       console.log(result);
-//       console.log("》》》》herererere");
-//       db.close();
-//     });
-//   }
-// );
