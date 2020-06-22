@@ -56,7 +56,7 @@ class MessageSearchCard extends Component {
 
   render() {
     let options = this.props.fetchedMsgList.map((e) => e.name);
-    let defaultOption = null;
+    let defaultOption = "";
 
     return (
       <div className={"msg_block "}>
@@ -72,7 +72,11 @@ class MessageSearchCard extends Component {
                   options={options}
                   onChange={this.handleChangeAuthor}
                   value={defaultOption}
-                  placeholder="Select an author"
+                  placeholder={
+                    this.state.author === ""
+                      ? "select an author"
+                      : this.state.author
+                  }
                 />
               </th>
             </tr>
@@ -130,6 +134,13 @@ class MessageSearchCard extends Component {
             onClick={this.handleClickSearch}
           >
             SEARCH
+          </button>
+          <button
+            className={"button_stuff"}
+            style={{ display: "inline-block" }}
+            onClick={this.handleClickSearch}
+          >
+            RESET
           </button>
         </div>
       </div>

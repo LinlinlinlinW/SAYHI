@@ -12,7 +12,6 @@
   color: #333;
   cursor: default;
   outline: none;
-  padding: 8px 52px 8px 10px;
   transition: all 200ms ease;
 }
 
@@ -75,12 +74,12 @@
 }
 
 .Dropdown-option:hover {
-  background-color: #f2f9fc;
+  background-color: #fbc8ec;
   color: #333;
 }
 
 .Dropdown-option.is-selected {
-  background-color: #f2f9fc;
+  background-color: #fbc8ec;
   color: #333;
 }
 
