@@ -3,6 +3,8 @@ import "../../index.css";
 import Message from "./Message";
 import { connect } from "react-redux";
 import { clearMessage, fetchMessage } from "../../actions/actions";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "./react-tabs.css";
 
 class MessageDisplayCard extends Component {
   constructor() {
@@ -55,20 +57,32 @@ class MessageDisplayCard extends Component {
 
   render() {
     return (
-      <div className={"msg_block row_column"}>
-        <h1>HISTORY</h1>
-        <div>
-          <button
-            className={"button_stuff"}
-            style={{ display: "inline-block" }}
-            onClick={this.handleClickClear}
-          >
-            CLEAR ALL MESSAGES
-          </button>
-        </div>
+      <Tabs>
+        <TabList>
+          <Tab>Title 1</Tab>
+          <Tab>Title 2</Tab>
+        </TabList>
 
-        <div id={"message_cards"}>{this.handleDisplay()}</div>
-      </div>
+        <TabPanel>
+          <div className={"msg_block row_column"}>
+            <h1>HISTORY</h1>
+            <div>
+              <button
+                className={"button_stuff"}
+                style={{ display: "inline-block" }}
+                onClick={this.handleClickClear}
+              >
+                CLEAR ALL MESSAGES
+              </button>
+            </div>
+
+            <div id={"message_cards"}>{this.handleDisplay()}</div>
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <h2> this is another tab</h2>
+        </TabPanel>
+      </Tabs>
     );
   }
 }
