@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "../index.css";
-import MessageInputCard from "./Home/MessageInputCard";
-import MessageDisplayCard from "./Home/MessageDisplayCard";
 import Navbar from "./Navbar";
 import Header from "./Header";
+import MessageInputCard from "./Home/MessageInputCard";
+import Tabs from "./Home/Tabs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,11 +22,10 @@ function App() {
 
 const Home = () => (
   // call
-
   <div>
     <Header />
     <MessageInputCard />
-    <MessageDisplayCard />
+    <Tabs />
   </div>
 );
 

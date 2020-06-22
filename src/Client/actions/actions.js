@@ -5,7 +5,7 @@ import axios from "axios";
 
 // FETCH MSG IN DB
 export const fetchMessage = () => {
-  console.log(">> Action: Message being fetched.");
+  console.log(">> step1: Action: Message being fetched.");
   return function (dispatch) {
     axios
       .put("http://127.0.0.1:9000/puts_prefill")
@@ -19,7 +19,6 @@ export const fetchMessage = () => {
   };
 };
 const fetchMessageAsync = (messages) => {
-  // console.log(">> in fetchMessageAsync,", messages);
   return {
     type: actions.MSG_FETCH,
     payload: messages,
@@ -28,12 +27,7 @@ const fetchMessageAsync = (messages) => {
 
 // ADD MSG
 export const addMessage = (element) => {
-  console.log(">> Action: Message being added is ", element);
-  //  WITHOUT CONNECTING TO DATABASE
-  //   return function (dispatch) {
-  //     dispatch(addMessageAsync(element));
-  //   };
-
+  console.log(">> step1: Action: Message being added is ", element);
   return function (dispatch) {
     axios
       .post("http://127.0.0.1:9000/posts", {
@@ -65,7 +59,7 @@ const addMessageAsync = (element) => {
 // DELETE MSG
 export const deleteMessage = (idToDel) => {
   return function (dispatch) {
-    console.log(">> Action: Message being deleted is ", idToDel);
+    console.log(">> step1: Action: Message being deleted is ", idToDel);
     axios
       .delete("http://127.0.0.1:9000/deletes", { data: { id: idToDel } })
       .then((res) => {
@@ -85,7 +79,7 @@ const deleteMessageAsync = (id) => {
 
 // CLEAR MSG
 export const clearMessage = () => {
-  console.log(">> Action: Messges being cleared");
+  console.log(">> step1: Action: Messges being cleared");
   return function (dispatch) {
     axios
       .delete("http://127.0.0.1:9000/deletes_all")
@@ -96,7 +90,6 @@ export const clearMessage = () => {
       .catch((rej) => {
         console.log(">> fail to clear msg in db", rej);
       });
-    //handler.use("/deletes_all", deleteAllRoute);
   };
 };
 const clearMessageAsync = () => {
@@ -107,7 +100,7 @@ const clearMessageAsync = () => {
 
 // LIKE MSG
 export const likeMessage = (idToLike) => {
-  console.log(">> Action: Message being liked is ", idToLike);
+  console.log(">> step1: Action: Message being liked is ", idToLike);
   return function (dispatch) {
     axios
       .put("http://127.0.0.1:9000/puts_like", { id: idToLike })
@@ -129,7 +122,7 @@ const likeMessageAsync = (id) => {
 
 // READ MSG
 export const readMessage = (idToRead) => {
-  console.log(">> Action: Message being read is ", idToRead);
+  console.log(">> step1: Action: Message being read is ", idToRead);
   return function (dispatch) {
     axios
       .put("http://127.0.0.1:9000/puts_read", { id: idToRead })
@@ -148,8 +141,26 @@ const readMessageAsync = (id) => {
     payload: id,
   };
 };
-// export const loading = () => {
-//   return {
-//     type: actions.MSG_LOADING,
-//   };
-// };
+
+// SEARCH MSG
+export const searchMessage = (contentToSearch) => {
+  console.log(">> step1: Action: content being searched is ", contentToSearch);
+  return function (dispatch) {
+    axios
+      .put("http://127.0.0.1:9000/filterMsg", { content: contentToSearch })
+      .then((res) => {
+        console.log(">> successfully filter msg in db", res);
+        dispatch(searchMessageAsync(res));
+      })
+      .catch((rej) => {
+        console.log(">> fail to search msg in db", rej);
+      });
+  };
+};
+
+const searchMessageAsync = (content) => {
+  return {
+    type: actions.MSG_SEARCH,
+    payload: content,
+  };
+};

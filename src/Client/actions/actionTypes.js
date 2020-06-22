@@ -6,3 +6,4 @@ export const MSG_CLEAR = "clearMessage";
 export const MSG_LIKE = "likeMessage";
 export const MSG_RESOLVED = "readMessage";
 export const MSG_FETCH = "fetchMessage";
+export const MSG_SEARCH = "searchMessage";

@@ -6,19 +6,19 @@ import * as actions from "../actions/actionTypes";
 export default function myReducer(state = [], action) {
   switch (action.type) {
     case actions.MSG_FETCH: {
-      console.log(">> Reducers: fetch message");
+      console.log(">> step2: Reducers: fetch message");
       state = action.payload;
       return [...state];
     }
 
     case actions.MSG_ADD: {
-      console.log(">> Reducers: add message");
+      console.log(">> step2: Reducers: add message");
       state.loading = false;
       return [...state, action.payload];
     }
 
     case actions.MSG_DEL: {
-      console.log(">> Reducers: delete message");
+      console.log(">> step2: Reducers: delete message");
       console.log(">> in DEL: state is ", state);
       let rr = state.filter((ele) => ele.id !== action.payload);
       return rr;
@@ -30,7 +30,7 @@ export default function myReducer(state = [], action) {
     }
 
     case actions.MSG_LIKE: {
-      console.log(">> Reducers: LIKE message");
+      console.log(">> step2: Reducers: LIKE message");
       let newRes = state.map((ele) => {
         if (ele.id === action.payload) {
           const likeNum = ele.like + 1;
@@ -41,7 +41,7 @@ export default function myReducer(state = [], action) {
     }
 
     case actions.MSG_RESOLVED: {
-      console.log(">> Reducers: haveRead message");
+      console.log(">> step2: Reducers: haveRead message");
       let newRes = state.map((ele) => {
         if (ele.id === action.payload) {
           let hhRead = ele.haveRead;
@@ -54,11 +54,11 @@ export default function myReducer(state = [], action) {
       return newRes;
     }
 
-    // case actions.MSG_LOADING: {
-    //   console.log(">> Reducers: loading");
-    //   state.loading = true;
-    //   break;
-    // }
+    case actions.MSG_SEARCH: {
+      console.log(">> step2: Reducers: searching");
+      state = action.payload;
+      return [...state];
+    }
 
     default:
       return state;
