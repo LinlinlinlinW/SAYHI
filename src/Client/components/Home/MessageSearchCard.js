@@ -14,7 +14,6 @@ class MessageSearchCard extends Component {
       startTime: "",
       endTime: "",
       keywords: "",
-      selectedOption: null,
     };
     this.handleClickSearch = this.handleClickSearch.bind(this);
   }
@@ -32,6 +31,17 @@ class MessageSearchCard extends Component {
     this.props.clickSearch();
   };
 
+  handleClickClear = () => {
+    this.refs.checkbox.checked = false;
+    this.setState({
+      author: "",
+      mostLikes: false,
+      startTime: "",
+      endTime: "",
+      keywords: "",
+    });
+  };
+
   handleChangeAuthor = (aauthor) => {
     console.log(">> Search : selected author is ", aauthor.value);
     this.setState({ author: aauthor.value });
@@ -43,14 +53,27 @@ class MessageSearchCard extends Component {
   };
 
   handleChangeStart = (sstartTime) => {
+    console.log(
+      ">> Search : start time is ",
+      sstartTime.target.value.replace(/-/g, "")
+    );
     this.setState({ startTime: sstartTime.target.value });
   };
 
   handleChangeEnd = (eendTime) => {
+    let endT = eendTime.target.value.replace(/-/g, "");
+    let startT = this.refs.startTime.value.replace(/-/g, "");
+
+    if (endT < startT) {
+      console.log("time doesn't make sense");
+      alert("time doesn't make sense");
+      return null;
+    }
     this.setState({ endTime: eendTime.target.value });
   };
 
   handleChangeKeywords = (kkeywords) => {
+    console.log(">> Search : search keyword is ", kkeywords.target.value);
     this.setState({ keywords: kkeywords.target.value });
   };
 
@@ -90,6 +113,7 @@ class MessageSearchCard extends Component {
                   type="checkbox"
                   value={this.state.mostLikes}
                   onChange={this.handleChangeMostLikes}
+                  ref="checkbox"
                 />
               </th>
             </tr>
@@ -103,11 +127,13 @@ class MessageSearchCard extends Component {
                   type="date"
                   value={this.state.startTime}
                   onChange={this.handleChangeStart}
+                  ref="startTime"
                 />
                 <input
                   type="date"
                   value={this.state.endTime}
                   onChange={this.handleChangeEnd}
+                  ref="endTime"
                 />
               </th>
             </tr>
@@ -131,14 +157,14 @@ class MessageSearchCard extends Component {
           <button
             className={"button_stuff"}
             style={{ display: "inline-block" }}
-            onClick={this.handleClickSearch}
+            onClick={(this.handleClickSearch, this.handleClickClear)}
           >
             SEARCH
           </button>
           <button
             className={"button_stuff"}
             style={{ display: "inline-block" }}
-            onClick={this.handleClickSearch}
+            onClick={this.handleClickClear}
           >
             RESET
           </button>

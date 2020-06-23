@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { AiFillLike, AiFillEye, AiFillDelete } from "react-icons/ai";
 import { likeMessage, deleteMessage, readMessage } from "../../actions/actions";
 import { connect } from "react-redux";
-import Popup from "reactjs-popup";
 import "../../index.css";
+import Popup from "reactjs-popup";
 import "./Popup_window.css";
 
 class Message extends Component {
