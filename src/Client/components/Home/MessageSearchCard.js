@@ -15,7 +15,12 @@ class MessageSearchCard extends Component {
       endTime: "",
       keywords: "",
     };
-    this.handleClickSearch = this.handleClickSearch.bind(this);
+    this.handleClickClear = this.handleClickClear.bind(this);
+    this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
+    this.handleChangeMostLikes = this.handleChangeMostLikes.bind(this);
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    this.handleChangeKeywords = this.handleChangeKeywords.bind(this);
   }
 
   componentDidMount = () => {
@@ -25,11 +30,6 @@ class MessageSearchCard extends Component {
   // componentDidUpdate = () => {
   //   this.props.fetchMessageInDB();
   // };
-
-  handleClickSearch = (event) => {
-    event.preventDefault();
-    this.props.clickSearch();
-  };
 
   handleClickClear = () => {
     this.refs.checkbox.checked = false;
@@ -140,7 +140,7 @@ class MessageSearchCard extends Component {
             <tr></tr>
             <tr>
               <th>
-                <label>Message key words</label>
+                <label>Search key words</label>
               </th>
               <th>
                 <div>
@@ -157,7 +157,16 @@ class MessageSearchCard extends Component {
           <button
             className={"button_stuff"}
             style={{ display: "inline-block" }}
-            onClick={(this.handleClickSearch, this.handleClickClear)}
+            onClick={() => (
+              this.props.searchMessage({
+                author: this.state.author,
+                mostLikes: this.state.mostLikes,
+                startTime: this.state.startTime,
+                endTime: this.state.endTime,
+                keywords: this.state.keywords,
+              }),
+              this.handleClickClear
+            )}
           >
             SEARCH
           </button>
@@ -175,10 +184,10 @@ class MessageSearchCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(
-    ">> in Search card->mapStateToProps, state.reducers is ",
-    state.reducers
-  );
+  // console.log(
+  //   " line 201: >>> in Search card->mapStateToProps, state.reducers is ",
+  //   state.reducers
+  // );
   return {
     fetchedMsgList: state.reducers,
     filteredMsgList: state.reducers,
@@ -186,7 +195,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapActionsToProps = (dispatch) => ({
-  clickSearch: (content) => dispatch(searchMessage(content)),
+  searchMessage: (content) => {
+    //console.log(" line 212: >>> content being searched is ", content);
+    dispatch(searchMessage(content));
+  },
   fetchMessageInDB: () => dispatch(fetchMessage()),
 });
 
