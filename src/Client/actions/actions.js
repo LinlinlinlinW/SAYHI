@@ -147,10 +147,13 @@ export const searchMessage = (contentToSearch) => {
   console.log(">> step1: Action: content being searched is ", contentToSearch);
   return function (dispatch) {
     axios
-      .put("http://127.0.0.1:9000/filterMsg", { content: contentToSearch })
+      .put("http://127.0.0.1:9000/getFilterMsg", { content: contentToSearch })
       .then((res) => {
-        console.log(">> successfully filter msg in db", res);
-        dispatch(searchMessageAsync(res));
+        console.log(
+          ">> **************** successfully filter msg in db",
+          res.data
+        );
+        dispatch(searchMessageAsync(res.data));
       })
       .catch((rej) => {
         console.log(">> fail to search msg in db", rej);

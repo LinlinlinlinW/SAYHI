@@ -57,7 +57,7 @@ export default function myReducer(state = [], action) {
     case actions.MSG_SEARCH: {
       console.log(">> step2: Reducers: searching");
       state = action.payload;
-      return [...state];
+      return state;
     }
 
     default:

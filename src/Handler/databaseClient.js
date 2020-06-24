@@ -11,7 +11,7 @@ const deleteRoute = require("./routes/deleteMsg");
 const putRoute_read = require("./routes/readMsg");
 const putRoute_like = require("./routes/likeMsg");
 const deleteAllRoute = require("./routes/deleteAllMsg");
-const filterMsg = require("./routes/filterMsg");
+const getFilterMsg = require("./routes/getFilterMsg");
 
 // execute it
 const handler = express();
@@ -24,7 +24,7 @@ handler.use("/deletes", deleteRoute);
 handler.use("/puts_read", putRoute_read);
 handler.use("/puts_like", putRoute_like);
 handler.use("/deletes_all", deleteAllRoute);
-handler.use("/filterMsg", filterMsg);
+handler.use("/getFilterMsg", getFilterMsg);
 
 // connect to mongodb through mongoose
 mongoose.connect(
