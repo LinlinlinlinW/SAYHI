@@ -17,10 +17,7 @@ class MessageDisplayCard extends Component {
   }
 
   handleDisplay = () => {
-    let sorted = this.props.messageList.sort(
-      // (a, b) => b.id.replace(/^id+/i, "") - a.id.replace(/^id+/i, "")
-      (a, b) => b.dateNow - a.dateNow
-    );
+    let sorted = this.props.messageList.sort((a, b) => b.dateNow - a.dateNow);
 
     if (sorted) {
       let messages = sorted.map((eachMessage) => (
@@ -47,6 +44,7 @@ class MessageDisplayCard extends Component {
   };
 
   componentDidMount = () => {
+    //console.log("****** in MessageDisplayCard:", this.props.fetchMessageInDB());
     this.props.fetchMessageInDB();
   };
 
@@ -71,6 +69,14 @@ class MessageDisplayCard extends Component {
 }
 
 const mapStateToProps = (state) => {
+  MessageDisplayCard.messageList = [
+    ...new Set(state.reducers.map((e) => e.name)),
+  ];
+  console.log(
+    "##### MessageDisplayCard.messageList",
+    MessageDisplayCard.messageList
+  );
+
   return {
     messageList: state.reducers,
   };
@@ -82,3 +88,7 @@ const mapActionsToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapActionsToProps)(MessageDisplayCard);
+
+export function getMsgList() {
+  return MessageDisplayCard.messageList;
+}

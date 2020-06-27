@@ -4,7 +4,7 @@ const Message = require("../models/Message");
 const router = express.Router();
 
 router.put("/", (req, res) => {
-  console.log("herererere!!", req.body.content);
+  // console.log("herererere!!", req.body.content);
   let filter = req.body.content;
   let author = filter.author;
   let mostLikes = filter.mostLikes;
@@ -21,23 +21,6 @@ router.put("/", (req, res) => {
     filter = null;
   }
 
-  // {
-  //   name: author,
-  //   $let: {
-  //     vars: {
-  //       applyMostLike: {
-  //         $cond: { if: mostLikes, then: "$like", else: null },
-  //       },
-  //     },
-  //     in: { $max: { likes: "$$applyMostLike" } },
-  //   },
-  //   $in: [keywords, "$$msg"],
-  //   time: {
-  //     $gte: ISODate(startTime),
-  //     $lt: ISODate(endTime),
-  //   },
-  // }
-
   if (filter === null) {
     Message.find({})
       .then((obj) => {
@@ -49,25 +32,16 @@ router.put("/", (req, res) => {
         res.status(404).send(err);
       });
   } else {
-    Message.aggregate([
-      // {
-      //  $match: { name: author },
-      //{
-      // id: "$id",
-      // name: "$name",
-      // msg: "$msg",
-      // time: "$time",
-      // haveRead: "$haveRead",
-      // dataNow: "$dataNow",
-      //},
-      // },
-      {
-        $group: {
-          _id: author,
-          like: { $max: "$like" },
-        },
-      },
-    ])
+    // Message.aggregate(
+    //   { $text: { $search: keywords } },
+    //   { $match: { name: author } },
+    //   { $sort: { like: -1 } },
+    //   { $limit: 1 }
+    // )
+
+    Message.find({ $and: [{ name: author }, { $text: { $search: keywords } }] })
+      .sort({ like: -1 })
+      .limit(1) // find the message with the most LIKEs
       .then((obj) => {
         console.log(">> in filterMsg: obj is ", obj);
         res.status(200).send(obj);

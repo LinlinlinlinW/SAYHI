@@ -5,6 +5,7 @@ import { searchMessage, fetchMessage } from "../../actions/actions";
 import Dropdown from "react-dropdown";
 import "./dropdown.css";
 import Message from "./Message";
+import { getMsgList } from "./MessageDisplayCard";
 
 class MessageSearchCard extends Component {
   constructor() {
@@ -25,12 +26,8 @@ class MessageSearchCard extends Component {
   }
 
   componentDidMount = () => {
-    this.props.fetchMessageInDB();
+    //this.props.fetchMessageInDB();
   };
-
-  // componentDidUpdate = () => {
-  //   this.props.fetchMessageInDB();
-  // };
 
   handleClickClear = () => {
     this.refs.checkbox.checked = false;
@@ -44,7 +41,6 @@ class MessageSearchCard extends Component {
   };
 
   handleChangeAuthor = (aauthor) => {
-    //console.log(">> Search : selected author is ", aauthor.value);
     this.setState({ author: aauthor.value });
   };
 
@@ -54,10 +50,6 @@ class MessageSearchCard extends Component {
   };
 
   handleChangeStart = (sstartTime) => {
-    // console.log(
-    //   ">> Search : start time is ",
-    //   sstartTime.target.value.replace(/-/g, "")
-    // );
     this.setState({ startTime: sstartTime.target.value });
   };
 
@@ -66,7 +58,6 @@ class MessageSearchCard extends Component {
     let startT = this.refs.startTime.value.replace(/-/g, "");
 
     if (endT < startT) {
-      // console.log("time doesn't make sense");
       alert("time doesn't make sense");
       return null;
     }
@@ -74,13 +65,12 @@ class MessageSearchCard extends Component {
   };
 
   handleChangeKeywords = (kkeywords) => {
-    // console.log(">> Search : search keyword is ", kkeywords.target.value);
     this.setState({ keywords: kkeywords.target.value });
   };
 
   handleDisplay = () => {
     let filteredMsg = this.props.filteredMsgList;
-    console.log(">> filteredMsg is ", filteredMsg);
+    // console.log(">> filteredMsg is ", filteredMsg);
 
     if (filteredMsg) {
       let messages = filteredMsg.map((eachMessage) => (
@@ -102,7 +92,7 @@ class MessageSearchCard extends Component {
   };
 
   render() {
-    let options = this.props.filteredMsgList.map((e) => e.name);
+    let opts = getMsgList();
     let defaultOption = "";
 
     return (
@@ -117,7 +107,7 @@ class MessageSearchCard extends Component {
                 </th>
                 <th>
                   <Dropdown
-                    options={options}
+                    options={opts}
                     onChange={this.handleChangeAuthor}
                     value={defaultOption}
                     placeholder={
@@ -211,26 +201,15 @@ class MessageSearchCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(
-    " line 215: >>> in Search card->mapStateToProps, state.reducers is ",
-    state.reducers
-  );
-  console.log(
-    " line 219: >>> in Search card->mapStateToProps, state is ",
-    state
-  );
   return {
-    fetchedMsgList: state.reducers,
     filteredMsgList: state.reducers,
   };
 };
 
 const mapActionsToProps = (dispatch) => ({
   searchMessage: (content) => {
-    //console.log(" line 212: >>> content being searched is ", content);
     dispatch(searchMessage(content));
   },
-  fetchMessageInDB: () => dispatch(fetchMessage()),
 });
 
 export default connect(mapStateToProps, mapActionsToProps)(MessageSearchCard);
