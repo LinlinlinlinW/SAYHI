@@ -72,10 +72,6 @@ const mapStateToProps = (state) => {
   MessageDisplayCard.messageList = [
     ...new Set(state.reducers.map((e) => e.name)),
   ];
-  console.log(
-    "##### MessageDisplayCard.messageList",
-    MessageDisplayCard.messageList
-  );
 
   return {
     messageList: state.reducers,

@@ -17,18 +17,19 @@ router.put("/", (req, res) => {
             .then((rr) => {
               res.status(200).send(rr);
             })
-            .catch((er) => {
-              console.log("somgthing wrong", er);
+            .catch((error) => {
+              console.log(">> somgthing wrong :", error);
+              res.status(500).send(error);
             });
         })
         .catch((error) => {
-          res.status(304);
-          console.log(">> cannot update LIKED msg:", error);
+          console.log(">> cannot update LIKED msg :", error);
+          res.status(304).send(error);
         });
     })
-    .catch((err) => {
-      res.status(404).send(err);
-      console.log(">> cannot find id in LIKE msg:", err);
+    .catch((error) => {
+      console.log(">> cannot find id in LIKE msg :", error);
+      res.status(404).send(error);
     });
 });
 

@@ -4,7 +4,6 @@ const Message = require("../models/Message");
 const router = express.Router();
 
 router.put("/", (req, res) => {
-  // console.log("herererere!!", req.body.content);
   let filter = req.body.content;
   let author = filter.author;
   let mostLikes = filter.mostLikes;
@@ -27,9 +26,9 @@ router.put("/", (req, res) => {
         console.log(">> in filterMsg: obj is ", obj);
         res.status(200).send(obj);
       })
-      .catch((err) => {
-        console.log(">> in filterMsg: err is ", err);
-        res.status(404).send(err);
+      .catch((error) => {
+        console.log(">> in filterMsg: err is ", error);
+        res.status(404).send(error);
       });
   } else {
     // Message.aggregate(
@@ -46,9 +45,9 @@ router.put("/", (req, res) => {
         console.log(">> in filterMsg: obj is ", obj);
         res.status(200).send(obj);
       })
-      .catch((err) => {
-        console.log(">> in filterMsg: err is ", err);
-        res.status(500).send(err);
+      .catch((error) => {
+        console.log(">> in filterMsg: err is ", error);
+        res.status(500).send(error);
       });
   }
 });

@@ -10,9 +10,9 @@ router.delete("/", (req, res) => {
         res.status(200).send(rr);
       });
     })
-    .catch((err) => {
-      res.status(405).send(err);
-      console.log(">> something wrong in DELETE all msg,", err);
+    .catch((error) => {
+      console.log(">> something wrong in DELETE all msg :", error);
+      res.status(405).send(error);
     });
 });
 

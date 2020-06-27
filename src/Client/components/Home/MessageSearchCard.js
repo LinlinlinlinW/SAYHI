@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../index.css";
 import { connect } from "react-redux";
-import { searchMessage, fetchMessage } from "../../actions/actions";
+import { searchMessage } from "../../actions/actions";
 import Dropdown from "react-dropdown";
 import "./dropdown.css";
 import Message from "./Message";

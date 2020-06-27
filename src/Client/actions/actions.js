@@ -10,7 +10,7 @@ export const fetchMessage = () => {
     axios
       .put("http://127.0.0.1:9000/puts_prefill")
       .then((res) => {
-        console.log(">> prefilled msg fetched from db is ", res.data);
+        console.log(">> successfully prefilled msg fetched from db");
         dispatch(fetchMessageAsync(res.data));
       })
       .catch((rej) => {
@@ -149,10 +149,7 @@ export const searchMessage = (contentToSearch) => {
     axios
       .put("http://127.0.0.1:9000/getFilterMsg", { content: contentToSearch })
       .then((res) => {
-        console.log(
-          ">> **************** successfully filter msg in db",
-          res.data
-        );
+        console.log(">>  successfully filter msg in db", res.data);
         dispatch(searchMessageAsync(res.data));
       })
       .catch((rej) => {

@@ -12,20 +12,21 @@ router.put("/", (req, res) => {
         .then((result) => {
           Message.findOne({ id: result.id })
             .then((rr) => {
-              res.send(rr);
+              res.status(200).send(rr);
             })
             .catch((er) => {
-              console.log(">> something wrong", er);
+              console.log(">> something wrong :", er);
+              res.status(500).send(er);
             });
         })
         .catch((error) => {
-          res.status(304);
-          console.log(">> cannot update READ msg:", error);
+          console.log(">> cannot update READ msg :", error);
+          res.status(304).send(error);
         });
     })
-    .catch((err) => {
-      res.status(404).send(err);
-      console.log(">> cannot find id in READ msg:", err);
+    .catch((error) => {
+      console.log(">> cannot find id in READ msg :", error);
+      res.status(404).send(error);
     });
 });
 

@@ -8,7 +8,6 @@ router.put("/", (req, res) => {
     .then((obj) => {
       // obj is an array
       if (obj.length !== 0) {
-        console.log("obj:", obj);
         res.status(200).send(obj);
       } else {
         let newMsg1 = new Message({
@@ -47,20 +46,19 @@ router.put("/", (req, res) => {
               })
               .catch((error) => {
                 console.log(">> fail to save newMsg2 : ", error);
+                res.status(500).send(error);
               });
           })
           .catch((error) => {
             console.log(">> fail to save newMsg1 : ", error);
+            res.status(500).send(error);
           });
       }
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(409).send({ "somethingWrong:": err });
+    .catch((error) => {
+      console.log(">> something wrong in find messages in db :", error);
+      res.status(409).send(error);
     });
 });
 
-// router.get("/", (req, res) => {
-//   res.send("we are on post home");
-// });
 module.exports = router;

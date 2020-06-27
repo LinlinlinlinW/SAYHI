@@ -8,8 +8,8 @@ router.post("/", (req, res) => {
     .then((obj) => {
       // obj is an array
       if (obj.length !== 0) {
-        console.log("obj:", obj);
-        res.status(409).send({ "msg have already exists": obj });
+        console.log(">> msg have already exists!");
+        res.status(409).send(obj);
       } else {
         const newMsg = new Message({
           _id: new mongoose.Types.ObjectId(),
@@ -33,8 +33,8 @@ router.post("/", (req, res) => {
           });
       }
     })
-    .catch((err) => {
-      res.status(409).send({ All: Message.find(), "something wrong:": err });
+    .catch((error) => {
+      res.status(409).send({ All: Message.find(), error: error });
     });
 });
 module.exports = router;
