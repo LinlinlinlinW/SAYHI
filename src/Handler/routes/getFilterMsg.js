@@ -21,15 +21,15 @@ queryHelper = (filter) => {
     return query;
   }
 
-  if (keywords !== "") {
+  if (keywords) {
     query.push({ $match: { $and: [{ $text: { $search: keywords } }] } });
   }
 
-  if (author !== "") {
+  if (author) {
     query.push({ $match: { $and: [{ name: author }] } });
   }
 
-  if (startTime !== "" || endTime !== "") {
+  if (startTime || endTime) {
     startTime = startTime
       ? new Date(startTime).toISOString()
       : new Date("1001-01-01").toISOString();
