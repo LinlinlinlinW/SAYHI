@@ -1,5 +1,6 @@
 TODO:
-1)In SEARCH card: reset button: clear the "Author"
+1)In SEARCH card: reset button: clear the input form
+2)Deactive function in Message card
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
