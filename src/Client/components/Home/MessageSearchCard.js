@@ -11,6 +11,7 @@ class MessageSearchCard extends Component {
   constructor() {
     super();
     this.state = {
+      display: false,
       author: "",
       mostLikes: false,
       startTime: "",
@@ -24,10 +25,6 @@ class MessageSearchCard extends Component {
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.handleChangeKeywords = this.handleChangeKeywords.bind(this);
   }
-
-  componentDidMount = () => {
-    //this.props.fetchMessageInDB();
-  };
 
   handleClickClear = () => {
     this.refs.checkbox.checked = false;
@@ -72,7 +69,7 @@ class MessageSearchCard extends Component {
     let filteredMsg = this.props.filteredMsgList;
     // console.log(">> filteredMsg is ", filteredMsg);
 
-    if (filteredMsg) {
+    if (this.state.display) {
       let messages = filteredMsg.map((eachMessage) => (
         <Message
           key={eachMessage.id}
@@ -87,7 +84,7 @@ class MessageSearchCard extends Component {
       ));
       return messages;
     } else {
-      return filteredMsg;
+      return null;
     }
   };
 
@@ -174,6 +171,7 @@ class MessageSearchCard extends Component {
             className={"button_stuff"}
             style={{ display: "inline-block" }}
             onClick={() => (
+              this.setState({ display: true }),
               this.props.searchMessage({
                 author: this.state.author,
                 mostLikes: this.state.mostLikes,
@@ -189,7 +187,9 @@ class MessageSearchCard extends Component {
           <button
             className={"button_stuff"}
             style={{ display: "inline-block" }}
-            onClick={this.handleClickClear}
+            onClick={() => (
+              this.setState({ display: false }), this.handleClickClear
+            )}
           >
             RESET
           </button>
@@ -206,10 +206,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapActionsToProps = (dispatch) => ({
-  searchMessage: (content) => {
-    dispatch(searchMessage(content));
-  },
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchMessage: (content) => dispatch(searchMessage(content)),
+  };
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(MessageSearchCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageSearchCard);
