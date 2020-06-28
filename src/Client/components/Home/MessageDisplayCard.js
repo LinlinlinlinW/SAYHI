@@ -44,7 +44,6 @@ class MessageDisplayCard extends Component {
   };
 
   componentDidMount = () => {
-    //console.log("****** in MessageDisplayCard:", this.props.fetchMessageInDB());
     this.props.fetchMessageInDB();
   };
 

@@ -54,7 +54,7 @@ class Message extends Component {
           <div className={"header"}> Message Details </div>
 
           <div className={"content"}>
-            <h4> Created Time : {this.props.time}</h4>
+            <h4> Created Time : {this.props.time.slice(0, 10)}</h4>
             <h4> Name : {this.props.name}</h4>
             <h4> Message Content : {this.props.msg}</h4>
             <h4> Number of Likes : {this.props.like}</h4>

@@ -16,7 +16,8 @@ router.put("/", (req, res) => {
           name: "John Doe",
           msg: "Message shown here!",
           like: 0,
-          time: new Date().toLocaleString(),
+          time: new Date().toISOString(),
+          // time: new Date().toLocaleString(),
           haveRead: false,
           dateNow: 1591912492096,
         });
@@ -26,7 +27,7 @@ router.put("/", (req, res) => {
           name: "Obaseki Nosa",
           msg: "Message shown here!",
           like: 3,
-          time: "6/9/2020, 12:32:15 AM",
+          time: "2020-06-09T12:32:15.745Z",
           haveRead: true,
           dateNow: 1591912492196,
         });
@@ -46,17 +47,20 @@ router.put("/", (req, res) => {
               })
               .catch((error) => {
                 console.log(">> fail to save newMsg2 : ", error);
+                alert(error);
                 res.status(500).send(error);
               });
           })
           .catch((error) => {
             console.log(">> fail to save newMsg1 : ", error);
+            alert(error);
             res.status(500).send(error);
           });
       }
     })
     .catch((error) => {
       console.log(">> something wrong in find messages in db :", error);
+      alert(error);
       res.status(409).send(error);
     });
 });

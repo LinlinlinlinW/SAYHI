@@ -127,7 +127,7 @@ export const readMessage = (idToRead) => {
     axios
       .put("http://127.0.0.1:9000/puts_read", { id: idToRead })
       .then((res) => {
-        console.log(">> successfully like msg in db", res.data.id);
+        console.log(">> successfully read msg in db", res.data.id);
         dispatch(readMessageAsync(res.data.id));
       })
       .catch((rej) => {

@@ -1,3 +1,6 @@
+TODO:
+1)In SEARCH card: reset button: clear the "Author"
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

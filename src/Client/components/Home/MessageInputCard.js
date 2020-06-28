@@ -73,7 +73,7 @@ class MessageInputCard extends Component {
                   ? this.state.msg
                   : "The guest doesn't say anything",
                 like: 0,
-                time: new Date().toLocaleString(),
+                time: new Date().toISOString(),
                 haveRead: false,
                 dateNow: Date.now(),
               })

@@ -3,8 +3,8 @@ const express = require("express");
 const Message = require("../models/Message");
 const router = express.Router();
 
-router.put("/", (req, res) => {
-  let filter = req.body.content;
+queryHelper = (filter) => {
+  let query = [];
   let author = filter.author;
   let mostLikes = filter.mostLikes;
   let startTime = filter.startTime;
@@ -17,39 +17,53 @@ router.put("/", (req, res) => {
     endTime === "" &&
     keywords === ""
   ) {
-    filter = null;
+    query.push({ $match: {} });
+    return query;
   }
 
-  if (filter === null) {
-    Message.find({})
-      .then((obj) => {
-        console.log(">> in filterMsg: obj is ", obj);
-        res.status(200).send(obj);
-      })
-      .catch((error) => {
-        console.log(">> in filterMsg: err is ", error);
-        res.status(404).send(error);
-      });
-  } else {
-    // Message.aggregate(
-    //   { $text: { $search: keywords } },
-    //   { $match: { name: author } },
-    //   { $sort: { like: -1 } },
-    //   { $limit: 1 }
-    // )
-
-    Message.find({ $and: [{ name: author }, { $text: { $search: keywords } }] })
-      .sort({ like: -1 })
-      .limit(1) // find the message with the most LIKEs
-      .then((obj) => {
-        console.log(">> in filterMsg: obj is ", obj);
-        res.status(200).send(obj);
-      })
-      .catch((error) => {
-        console.log(">> in filterMsg: err is ", error);
-        res.status(500).send(error);
-      });
+  if (keywords !== "") {
+    query.push({ $match: { $and: [{ $text: { $search: keywords } }] } });
   }
+
+  if (author !== "") {
+    query.push({ $match: { $and: [{ name: author }] } });
+  }
+
+  if (startTime !== "" || endTime !== "") {
+    startTime = startTime
+      ? new Date(startTime).toISOString()
+      : new Date("1001-01-01").toISOString();
+    endTime = endTime
+      ? new Date(endTime).toISOString()
+      : new Date("9999-12-31").toISOString();
+
+    query.push({
+      $match: { $and: [{ time: { $gte: startTime, $lte: endTime } }] },
+    });
+  }
+
+  if (mostLikes) {
+    query.push({ $sort: { like: -1 } });
+  }
+
+  return query;
+};
+
+router.put("/", (req, res) => {
+  let filter = req.body.content;
+  let query = queryHelper(filter);
+  // console.log(">>>>>>> query:", query);
+
+  Message.aggregate(query)
+    .then((obj) => {
+      console.log(">> in filterMsg: obj is ", obj);
+      res.status(200).send(obj);
+    })
+    .catch((error) => {
+      console.log(">> in filterMsg: err is ", error);
+      alert(error);
+      res.status(500).send(error);
+    });
 });
 
 module.exports = router;
