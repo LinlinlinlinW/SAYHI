@@ -3,7 +3,7 @@ import "../../index.css";
 import Message from "./Message";
 import { connect } from "react-redux";
 import { clearMessage, fetchMessage } from "../../actions/actions";
-import LoadMask from "react-loadmask";
+import PageLoader from "./PageLoader";
 
 class MessageDisplayCard extends Component {
   constructor() {
@@ -11,6 +11,7 @@ class MessageDisplayCard extends Component {
 
     this.state = {
       messages: [],
+      loading: true,
     };
 
     this.handleDisplay = this.handleDisplay.bind(this);
@@ -23,6 +24,7 @@ class MessageDisplayCard extends Component {
     if (sorted) {
       let messages = sorted.map((eachMessage) => (
         <Message
+          loading={this.state.loading}
           key={eachMessage.id}
           id={eachMessage.id}
           name={eachMessage.name}
@@ -44,8 +46,11 @@ class MessageDisplayCard extends Component {
     this.props.clickClear();
   };
 
-  componentDidMount = () => {
-    this.props.fetchMessageInDB();
+  componentDidMount = async () => {
+    await setTimeout(async () => {
+      await this.props.fetchMessageInDB();
+      this.setState({ loading: false });
+    }, 2500);
   };
 
   render() {
@@ -62,7 +67,10 @@ class MessageDisplayCard extends Component {
           </button>
         </div>
 
-        <div id={"message_cards"}>{this.handleDisplay()}</div>
+        <div id={"message_cards"}>
+          <PageLoader loading={this.state.loading} />
+          {this.handleDisplay()}
+        </div>
       </div>
     );
   }
