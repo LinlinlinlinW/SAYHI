@@ -67,11 +67,11 @@ class MessageSearchCard extends Component {
 
   handleDisplay = () => {
     let filteredMsg = this.props.filteredMsgList;
-    // console.log(">> filteredMsg is ", filteredMsg);
 
     if (this.state.display) {
       let messages = filteredMsg.map((eachMessage) => (
         <Message
+          isSearchCard={true}
           key={eachMessage.id}
           id={eachMessage.id}
           name={eachMessage.name}
@@ -108,10 +108,9 @@ class MessageSearchCard extends Component {
                     onChange={this.handleChangeAuthor}
                     value={defaultOption}
                     placeholder={
-                      this.state.author === ""
-                        ? "select an author"
-                        : this.state.author
+                      this.state.author === "" ? "unselect" : this.state.author
                     }
+                    ref="dropdown"
                   />
                 </th>
               </tr>
@@ -179,7 +178,7 @@ class MessageSearchCard extends Component {
                 endTime: this.state.endTime,
                 keywords: this.state.keywords,
               }),
-              this.handleClickClear
+              this.handleClickClear()
             )}
           >
             SEARCH
@@ -188,7 +187,7 @@ class MessageSearchCard extends Component {
             className={"button_stuff"}
             style={{ display: "inline-block" }}
             onClick={() => (
-              this.setState({ display: false }), this.handleClickClear
+              this.setState({ display: false }), this.handleClickClear()
             )}
           >
             RESET

@@ -107,6 +107,22 @@ class Message extends Component {
   render() {
     if (this.props.loading) return null;
 
+    if (this.props.isSearchCard)
+      return (
+        <div
+          className={"card-container"}
+          style={this.styleControl()}
+          onMouseEnter={this.mouseEnterCard}
+          onMouseLeave={this.mouseLeaveCard}
+        >
+          <div>
+            <div className={"card-container-first-row"}>{this.props.name}</div>
+            <div className={"card-container-second-row"}>{this.props.msg}</div>
+            <div className={"card-container-third-row"}>{this.modal}</div>
+          </div>
+        </div>
+      );
+
     return (
       <div
         className={"card-container"}

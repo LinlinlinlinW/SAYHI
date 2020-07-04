@@ -25,6 +25,7 @@ class MessageDisplayCard extends Component {
       let messages = sorted.map((eachMessage) => (
         <Message
           loading={this.state.loading}
+          isSearchCard={false}
           key={eachMessage.id}
           id={eachMessage.id}
           name={eachMessage.name}
@@ -94,5 +95,10 @@ const mapActionsToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapActionsToProps)(MessageDisplayCard);
 
 export function getMsgList() {
-  return MessageDisplayCard.messageList;
+  let llist = MessageDisplayCard.messageList;
+  if (!llist.includes("unselect")) {
+    llist.unshift("unselect");
+  }
+
+  return llist;
 }
