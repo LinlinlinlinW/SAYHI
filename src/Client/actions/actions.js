@@ -164,3 +164,10 @@ const searchMessageAsync = (content) => {
     payload: content,
   };
 };
+
+const loadingMessage = () => {
+  return {
+    type: actions.MSG_LOADING,
+    // payload: ,
+  };
+};

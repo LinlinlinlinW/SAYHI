@@ -60,6 +60,14 @@ export default function myReducer(state = [], action) {
       return state;
     }
 
+    case actions.MSG_LOADING: {
+      console.log(">> step2: Reducers: loading message");
+      return Object.assign({}, state, { isLoading: true });
+    }
+
+    // case RECEIVE_ACTIVATED_DEVICES:
+    //   return Object.assign({}, state, { isLoading: false });
+
     default:
       return state;
   }

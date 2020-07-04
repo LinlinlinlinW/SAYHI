@@ -3,6 +3,7 @@ import "../../index.css";
 import Message from "./Message";
 import { connect } from "react-redux";
 import { clearMessage, fetchMessage } from "../../actions/actions";
+import LoadMask from "react-loadmask";
 
 class MessageDisplayCard extends Component {
   constructor() {
