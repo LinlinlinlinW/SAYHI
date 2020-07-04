@@ -93,7 +93,7 @@ class MessageSearchCard extends Component {
     let defaultOption = "";
 
     return (
-      <div className={"msg_block "}>
+      <div className={"msg_block"}>
         <h1>SEARCH</h1>
         <div id={"searchCard"}>
           <table>
@@ -177,8 +177,7 @@ class MessageSearchCard extends Component {
                 startTime: this.state.startTime,
                 endTime: this.state.endTime,
                 keywords: this.state.keywords,
-              }),
-              this.handleClickClear()
+              })
             )}
           >
             SEARCH
