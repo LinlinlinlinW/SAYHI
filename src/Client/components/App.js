@@ -23,7 +23,7 @@ function App() {
 const Home = () => (
   // call
   <div>
-    {/* <Header /> */}
+    <Header />
     <MessageInputCard />
     <Tabs />
   </div>

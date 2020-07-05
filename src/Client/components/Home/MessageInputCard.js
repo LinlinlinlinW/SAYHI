@@ -33,7 +33,7 @@ class MessageInputCard extends Component {
 
   render() {
     return (
-      <div className={"msg_block row_column"}>
+      <div className={"msg_block row_column welcome"}>
         <h1>WELCOME</h1>
         <div>
           <textarea
