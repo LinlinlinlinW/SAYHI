@@ -165,9 +165,18 @@ const searchMessageAsync = (content) => {
   };
 };
 
-const loadingMessage = () => {
-  return {
-    type: actions.MSG_LOADING,
-    // payload: ,
+// EDIT MSG
+export const editMessage = (contentToEdit) => {
+  console.log(">> step1: Action: content being edited is ", contentToEdit);
+  return function (dispatch) {
+    axios
+      .put("http://127.0.0.1:9000/editMsg", { contentToEdit })
+      .then((res) => {
+        console.log(">>  successfully edit msg in db:", res);
+        // dispatch(editMessageAsync(res.data));
+      })
+      .catch((rej) => {
+        console.log(">> fail to edit msg in db", rej);
+      });
   };
 };

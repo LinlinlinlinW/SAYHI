@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { AiFillLike, AiFillEye, AiFillDelete } from "react-icons/ai";
-import { likeMessage, deleteMessage, readMessage } from "../../actions/actions";
+import {
+  likeMessage,
+  deleteMessage,
+  readMessage,
+  editMessage,
+} from "../../actions/actions";
 import { connect } from "react-redux";
 import "../../index.css";
 import Popup from "reactjs-popup";
 import "./Popup_window.css";
+import CTE from "react-click-to-edit";
 
 class Message extends Component {
   constructor(props) {
@@ -20,6 +26,7 @@ class Message extends Component {
     this.handleClickDelete = this.handleClickDelete.bind(this);
     this.handleClickLike = this.handleClickLike.bind(this);
     this.handleClickRead = this.handleClickRead.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     this.styleControl = this.styleControl.bind(this);
     this.mouseEnterCard = this.mouseEnterCard.bind(this);
   }
@@ -37,6 +44,11 @@ class Message extends Component {
   handleClickRead = (event) => {
     event.preventDefault();
     this.props.clickRead(this.props.id);
+  };
+
+  handleEdit = (id, value) => {
+    console.log(">> in handling edit", id, value);
+    this.props.handleEdit({ id, value });
   };
 
   modal = (
@@ -132,7 +144,14 @@ class Message extends Component {
       >
         <div onClick={this.handleClickRead}>
           <div className={"card-container-first-row"}>{this.props.name}</div>
-          <div className={"card-container-second-row"}>{this.props.msg}</div>
+
+          <div className={"card-container-second-row"}>
+            <CTE
+              initialValue={this.props.msg}
+              endEditing={(value) => this.handleEdit(this.props.id, value)}
+            />
+          </div>
+
           <div className={"card-container-third-row"}>
             <button className={"button_stuff"} onClick={this.handleClickLike}>
               <AiFillLike className={"button_icon"} />
@@ -153,6 +172,9 @@ const mapActionsToProps = (dispatch) => ({
   clickLike: (id) => dispatch(likeMessage(id)),
   clickDelete: (id) => dispatch(deleteMessage(id)),
   clickRead: (id) => dispatch(readMessage(id)),
+  handleEdit: ({ id, value }) => (
+    dispatch(editMessage({ id, value })), console.log("herererererere!!!!")
+  ),
 });
 
 export default connect(null, mapActionsToProps)(Message);

@@ -65,9 +65,6 @@ export default function myReducer(state = [], action) {
       return Object.assign({}, state, { isLoading: true });
     }
 
-    // case RECEIVE_ACTIVATED_DEVICES:
-    //   return Object.assign({}, state, { isLoading: false });
-
     default:
       return state;
   }

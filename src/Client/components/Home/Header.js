@@ -10,12 +10,12 @@ class Header extends Component {
   render() {
     return (
       <div id={"container-div"}>
-        <ParallaxComponent speed={0.4} zindex="0" top="100px" textAlign="right">
-          <h1>SAY</h1>
+        <ParallaxComponent speed={1.8} zindex="0" top="300px" textAlign="right">
+          <p style={{ fontSize: "60px" }}>SAY</p>
         </ParallaxComponent>
 
-        <ParallaxComponent speed={2.5} zindex="0" top="170px" textAlign="left">
-          <h1>HI</h1>
+        <ParallaxComponent speed={2.5} zindex="0" top="300px" textAlign="left">
+          <p style={{ fontSize: "60px" }}>HI</p>
         </ParallaxComponent>
       </div>
     );
