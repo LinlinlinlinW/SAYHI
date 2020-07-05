@@ -172,8 +172,7 @@ export const editMessage = (contentToEdit) => {
     axios
       .put("http://127.0.0.1:9000/editMsg", { contentToEdit })
       .then((res) => {
-        console.log(">>  successfully edit msg in db:", res);
-        // dispatch(editMessageAsync(res.data));
+        console.log(">> successfully edit msg in db", res);
       })
       .catch((rej) => {
         console.log(">> fail to edit msg in db", rej);
