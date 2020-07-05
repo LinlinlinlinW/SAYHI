@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 import Navbar from "./Navbar";
-import Header from "./Header";
+import Header from "./Home/Header";
 import MessageInputCard from "./Home/MessageInputCard";
 import Tabs from "./Home/Tabs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

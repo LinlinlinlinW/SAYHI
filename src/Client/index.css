@@ -22,8 +22,7 @@
 }
 
 #searchCard {
-  z-index: 0;
-  text-align: center;
+  grid-gap: 10px;
   display: inline-block;
   margin: 0;
   margin-top: 50px;
@@ -31,7 +30,6 @@
   margin-left: 30px;
   margin-right: 30px;
   padding: 15px;
-  width: 100%;
   background-color: transparent;
   box-shadow: 3px 3px 3px 3px gray;
   word-wrap: break-word;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../index.css";
+import "../../../Client/index.css";
 import ParallaxComponent from "./ParallaxComponent";
 
 class Header extends Component {
