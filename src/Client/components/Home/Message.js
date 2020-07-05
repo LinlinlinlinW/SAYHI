@@ -9,7 +9,7 @@ import {
 import { connect } from "react-redux";
 import "../../index.css";
 import Popup from "reactjs-popup";
-import "./Popup_window.css";
+import "./css/Popup_window.css";
 import CTE from "react-click-to-edit";
 
 class Message extends Component {

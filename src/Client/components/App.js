@@ -6,6 +6,7 @@ import AboutHeader from "./About/Header";
 import MessageInputCard from "./Home/MessageInputCard";
 import Tabs from "./Home/Tabs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ProjectTimeLine from "./About/ProjectTimeLine";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ const Home = () => (
 const About = () => (
   <div>
     <AboutHeader />
-    <MessageInputCard />
+    <ProjectTimeLine />
   </div>
 );
 

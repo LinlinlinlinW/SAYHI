@@ -3,7 +3,7 @@ import "../../index.css";
 import { connect } from "react-redux";
 import { searchMessage } from "../../actions/actions";
 import Dropdown from "react-dropdown";
-import "./dropdown.css";
+import "./css/dropdown.css";
 import Message from "./Message";
 import { getMsgList } from "./MessageDisplayCard";
 

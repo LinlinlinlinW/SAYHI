@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "./tabs.css";
+import "./css/tabs.css";
 import MessageDisplayCard from "./MessageDisplayCard";
 import MessageSearchCard from "./MessageSearchCard";
 

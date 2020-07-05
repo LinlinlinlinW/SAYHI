@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoaderGif from "./cat_spinner.gif";
+import LoaderGif from "./css/cat_spinner.gif";
 
 export default class PageLoader extends Component {
   constructor() {
