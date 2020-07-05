@@ -1,7 +1,8 @@
 import React from "react";
 import "../index.css";
 import Navbar from "./Navbar";
-import Header from "./Home/Header";
+import HomeHeader from "./Home/Header";
+import AboutHeader from "./About/Header";
 import MessageInputCard from "./Home/MessageInputCard";
 import Tabs from "./Home/Tabs";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -23,7 +24,7 @@ function App() {
 const Home = () => (
   // call
   <div>
-    <Header />
+    <HomeHeader />
     <MessageInputCard />
     <Tabs />
   </div>
@@ -31,7 +32,8 @@ const Home = () => (
 
 const About = () => (
   <div>
-    <h1>ABOUT ME</h1>
+    <AboutHeader />
+    <MessageInputCard />
   </div>
 );
 
