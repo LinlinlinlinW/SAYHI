@@ -81,18 +81,11 @@ class MessageInputCard extends Component {
           >
             ADD
           </button>
-          {/* {this.props.loading && <img src={logo} className={"App-logo"} />} */}
         </div>
       </div>
     );
   }
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     loading: state.loading,
-//   };
-// };
 
 const mapDispatchToProps = (dispatch) => {
   return {

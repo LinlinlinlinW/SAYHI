@@ -92,9 +92,6 @@
   padding: 0;
   margin: 0;
   display: grid;
-  /*justify-content: defines how the browser distributes space between
-  and around content items along the main-axis of a flex container,
-  and the inline axis of a grid container.*/
   justify-content: center;
   align-items: center;
   place-items: center;

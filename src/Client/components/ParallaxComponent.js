@@ -7,7 +7,6 @@ class parallaxElement extends Component {
     this.state = {
       speed: this.props.speed || 1,
 
-      //   width: "50%",
       flex: "50%",
       height: this.props.height || "100%",
       textAlign: this.props.textAlign,
@@ -40,12 +39,8 @@ class parallaxElement extends Component {
   handleScroll = () => {
     const speed = this.props.speed;
     const top = this.top;
-
     const pageTop = window.scrollY;
     const newTop = top - pageTop * speed;
-    // console.log(">> pageTop:", pageTop);
-    // console.log(">> newTop:", newTop);
-
     this.myRef.current.style.top = `${newTop}px`;
   };
 
