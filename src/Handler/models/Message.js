@@ -13,7 +13,7 @@ const messageSchema = mongoose.Schema(
   },
   { collection: "message" }
 );
-// messageSchema.index({ msg: "text" });
+
 messageSchema.index({ msg: "text" }, (err, result) => {});
 
 module.exports = mongoose.model("Message", messageSchema);

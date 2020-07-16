@@ -1,7 +1,7 @@
 import * as actions from "./actionTypes";
 import axios from "axios";
 
-// TODO: step2: add corresponding actions here
+// step2: add corresponding actions here
 
 // FETCH MSG IN DB
 export const fetchMessage = () => {

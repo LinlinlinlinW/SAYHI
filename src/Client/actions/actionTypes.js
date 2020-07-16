@@ -1,4 +1,4 @@
-// TODO: step1: add a new type of action
+// step1: add a new type of action
 
 export const MSG_ADD = "addNewMessage";
 export const MSG_DEL = "deleteMessage";
