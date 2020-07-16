@@ -3,7 +3,6 @@ import "../../index.css";
 import { connect } from "react-redux";
 import { addMessage } from "../../actions/actions";
 import { v4 as uuidv4 } from "uuid";
-// import logo from "../logo.svg";
 
 class MessageInputCard extends Component {
   constructor() {

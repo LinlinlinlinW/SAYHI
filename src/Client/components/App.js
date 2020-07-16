@@ -23,7 +23,6 @@ function App() {
 }
 
 const Home = () => (
-  // call
   <div>
     <HomeHeader />
     <MessageInputCard />

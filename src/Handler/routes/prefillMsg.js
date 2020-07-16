@@ -6,7 +6,6 @@ const Message = require("../models/Message");
 router.put("/", (req, res) => {
   Message.find({})
     .then((obj) => {
-      // obj is an array
       if (obj.length !== 0) {
         res.status(200).send(obj);
       } else {
@@ -17,7 +16,6 @@ router.put("/", (req, res) => {
           msg: "Message shown here!",
           like: 0,
           time: new Date().toISOString(),
-          // time: new Date().toLocaleString(),
           haveRead: false,
           dateNow: 1591912492096,
         });
