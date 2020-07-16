@@ -40,4 +40,13 @@ mongoose.connect(
 );
 
 // How do we start to listening to the server
-handler.listen(9000);
+// handler.listen(9000);
+
+const path = require("path");
+
+handler.use(express.static(path.resolve(__dirname, "../../build")));
+handler.get("/", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "../../build", "index.html"));
+});
+handler.listen(process.env.PORT || 9000);
+// comments

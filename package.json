@@ -32,7 +32,7 @@
     "uuid": "^8.1.0"
   },
   "scripts": {
-    "start": "npm-run-all --parallel start-build start-db",
+    "start": "node src/Handler/databaseClient.js",
     "start-build": "node app.js",
     "start-frontend": "react-scripts start",
     "start-db": "node src/Handler/databaseClient.js",
