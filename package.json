@@ -33,7 +33,6 @@
   },
   "scripts": {
     "start": "node src/Handler/databaseClient.js",
-    "start-build": "node app.js",
     "start-frontend": "react-scripts start",
     "start-db": "node src/Handler/databaseClient.js",
     "build": "react-scripts build",
