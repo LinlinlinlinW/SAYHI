@@ -30,7 +30,7 @@ export const addMessage = (element) => {
   console.log(">> step1: Action: Message being added is ", element);
   return function (dispatch) {
     axios
-      .post("https://sayhi-bolin.herokuapp.com//posts", {
+      .post("https://sayhi-bolin.herokuapp.com/posts", {
         id: element.id,
         name: element.name,
         msg: element.msg,
