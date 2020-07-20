@@ -8,7 +8,7 @@ export default function myReducer(state = [], action) {
     case actions.MSG_FETCH: {
       console.log(">> step2: Reducers: fetch message");
       state = action.payload;
-      return [...state];
+      return [state];
     }
 
     case actions.MSG_ADD: {
