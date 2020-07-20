@@ -20,7 +20,6 @@ export default function myReducer(state = [], action) {
 
     case actions.MSG_DEL: {
       console.log(">> step2: Reducers: delete message");
-      console.log(">> in DEL: state is ", state);
       let rr = state.filter((ele) => ele.id !== action.payload);
       return rr;
     }

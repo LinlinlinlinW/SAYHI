@@ -172,9 +172,7 @@ const mapActionsToProps = (dispatch) => ({
   clickLike: (id) => dispatch(likeMessage(id)),
   clickDelete: (id) => dispatch(deleteMessage(id)),
   clickRead: (id) => dispatch(readMessage(id)),
-  handleEdit: ({ id, value }) => (
-    dispatch(editMessage({ id, value })), console.log("herererererere!!!!")
-  ),
+  handleEdit: ({ id, value }) => dispatch(editMessage({ id, value })),
 });
 
 export default connect(null, mapActionsToProps)(Message);

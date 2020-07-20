@@ -40,8 +40,6 @@ export const addMessage = (element) => {
         dateNow: element.dateNow,
       })
       .then((response) => {
-        // console.log("resolve promise:", response.data);
-        // dispatch(loading());
         dispatch(addMessageAsync(response.data));
       })
       .catch((reject) => {
