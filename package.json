@@ -34,7 +34,6 @@
   "scripts": {
     "start": "node src/Handler/databaseClient.js",
     "start-frontend": "react-scripts start",
-    "start-db": "node src/Handler/databaseClient.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,5 +1,7 @@
-TODO:
-finished
+## Steps
+1. npm install
+2. npm run start (terminal 1)
+3. npm run start-frontend (terminal 2)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
