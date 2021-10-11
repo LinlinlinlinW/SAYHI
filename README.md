@@ -1,3 +1,6 @@
+## Play around
+https://sayhi-bolin.herokuapp.com/
+
 ## Steps
 1. npm install
 2. npm run start (terminal 1)
