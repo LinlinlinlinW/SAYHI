@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/* eslint-disable no-undef */
 const express = require("express");
 const Message = require("../models/Message");
 const router = express.Router();

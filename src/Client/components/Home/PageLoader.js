@@ -2,16 +2,13 @@ import React, { Component } from "react";
 import LoaderGif from "./css/cat_spinner.gif";
 
 export default class PageLoader extends Component {
-  constructor() {
-    super();
-  }
 
   render() {
     if (!this.props.loading) return null;
 
     return (
       <div>
-        <img src={LoaderGif} />
+        <img src={LoaderGif} alt="cat cat" />
       </div>
     );
   }

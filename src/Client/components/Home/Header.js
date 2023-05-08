@@ -3,9 +3,6 @@ import "../../../Client/index.css";
 import ParallaxComponent from "./ParallaxComponent";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
