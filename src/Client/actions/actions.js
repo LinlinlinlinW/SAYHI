@@ -3,12 +3,14 @@ import axios from "axios";
 
 // step2: add corresponding actions here
 
+const ci_url = "https://sayhi.onrender.com";
+
 // FETCH MSG IN DB
 export const fetchMessage = () => {
   console.log(">> step1: Action: Message being fetched.");
   return function (dispatch) {
     axios
-      .put("https://sayhi-bolin.herokuapp.com/puts_prefill")
+      .put(ci_url + "/puts_prefill")
       .then((res) => {
         console.log(">> successfully prefilled msg fetched from db");
         dispatch(fetchMessageAsync(res.data));
@@ -30,7 +32,7 @@ export const addMessage = (element) => {
   console.log(">> step1: Action: Message being added is ", element);
   return function (dispatch) {
     axios
-      .post("https://sayhi-bolin.herokuapp.com/posts", {
+      .post(ci_url + "/posts", {
         id: element.id,
         name: element.name,
         msg: element.msg,
@@ -59,7 +61,7 @@ export const deleteMessage = (idToDel) => {
   return function (dispatch) {
     console.log(">> step1: Action: Message being deleted is ", idToDel);
     axios
-      .delete("https://sayhi-bolin.herokuapp.com/deletes", {
+      .delete(ci_url + "/deletes", {
         data: { id: idToDel },
       })
       .then((res) => {
@@ -82,7 +84,7 @@ export const clearMessage = () => {
   console.log(">> step1: Action: Messges being cleared");
   return function (dispatch) {
     axios
-      .delete("https://sayhi-bolin.herokuapp.com/deletes_all")
+      .delete(ci_url + "/deletes_all")
       .then((res) => {
         console.log(">> successfully clear msg in db", res);
         dispatch(clearMessageAsync());
@@ -103,7 +105,7 @@ export const likeMessage = (idToLike) => {
   console.log(">> step1: Action: Message being liked is ", idToLike);
   return function (dispatch) {
     axios
-      .put("https://sayhi-bolin.herokuapp.com/puts_like", { id: idToLike })
+      .put(ci_url + "/puts_like", { id: idToLike })
       .then((res) => {
         console.log(">> successfully like msg in db", res.data.id);
         dispatch(likeMessageAsync(res.data.id));
@@ -125,7 +127,7 @@ export const readMessage = (idToRead) => {
   console.log(">> step1: Action: Message being read is ", idToRead);
   return function (dispatch) {
     axios
-      .put("https://sayhi-bolin.herokuapp.com/puts_read", { id: idToRead })
+      .put(ci_url + "/puts_read", { id: idToRead })
       .then((res) => {
         console.log(">> successfully read msg in db", res.data.id);
         dispatch(readMessageAsync(res.data.id));
@@ -147,7 +149,7 @@ export const searchMessage = (contentToSearch) => {
   console.log(">> step1: Action: content being searched is ", contentToSearch);
   return function (dispatch) {
     axios
-      .put("https://sayhi-bolin.herokuapp.com/getFilterMsg", {
+      .put(ci_url + "/getFilterMsg", {
         content: contentToSearch,
       })
       .then((res) => {
@@ -172,7 +174,7 @@ export const editMessage = (contentToEdit) => {
   console.log(">> step1: Action: content being edited is ", contentToEdit);
   return function (dispatch) {
     axios
-      .put("https://sayhi-bolin.herokuapp.com/editMsg", { contentToEdit })
+      .put(ci_url + "/editMsg", { contentToEdit })
       .then((res) => {
         console.log(">> successfully edit msg in db", res);
       })
