@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import React, { Component } from "react";
 import "../../index.css";
 import { connect } from "react-redux";
