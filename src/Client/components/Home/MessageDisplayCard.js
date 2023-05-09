@@ -20,7 +20,7 @@ class MessageDisplayCard extends Component {
 
   handleDisplay = () => {
     if (this.props.messageList === undefined) {
-      return
+      return {}
     }
     let sorted = this.props.messageList.sort((a, b) => b.dateNow - a.dateNow);
 
@@ -81,16 +81,17 @@ class MessageDisplayCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  if (state.reducers === undefined) {
-    return
+  let all_messages = state.rootReducer.reducers;
+  if (all_messages === undefined) {
+    return {}
   }
   
   MessageDisplayCard.messageList = [
-    ...new Set(state.reducers.map((e) => e.name)),
+    ...new Set(all_messages.map((e) => e.name)),
   ];
 
   return {
-    messageList: state.reducers,
+    messageList: all_messages,
   };
 };
 
