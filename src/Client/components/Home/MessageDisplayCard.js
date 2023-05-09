@@ -51,7 +51,7 @@ class MessageDisplayCard extends Component {
   };
 
   componentDidMount = async () => {
-    await setTimeout(async () => {
+    setTimeout(async () => {
       await this.props.fetchMessageInDB();
       this.setState({ loading: false });
     }, 2500);

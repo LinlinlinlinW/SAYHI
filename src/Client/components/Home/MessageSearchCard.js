@@ -67,6 +67,10 @@ class MessageSearchCard extends Component {
   };
 
   handleDisplay = () => {
+    if(this.props === undefined) {
+      return null
+    }
+    
     let filteredMsg = this.props.filteredMsgList;
 
     if (this.state.display) {
@@ -201,7 +205,7 @@ class MessageSearchCard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    filteredMsgList: state.reducers,
+    filteredMsgList: state.rootReducer.reducers,
   };
 };
 
